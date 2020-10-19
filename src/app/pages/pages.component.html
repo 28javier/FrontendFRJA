@@ -1,0 +1,34 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+
+
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <!-- breadcrumbs -->
+            <app-breadcrumbs></app-breadcrumbs>
+            <!-- SISTEMAS DE RUTAS  -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            © {{year}} Fundación Rostro de Jesús.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+</div>
