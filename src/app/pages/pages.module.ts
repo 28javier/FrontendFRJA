@@ -11,6 +11,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { PagesComponent } from './pages.component';
+import { AccountSetingsComponent } from './account-setings/account-setings.component';
 
 
 
@@ -22,7 +23,8 @@ import { PagesComponent } from './pages.component';
     ProductoComponent,
     CategoriaComponent,
     PacienteComponent,
-    PagesComponent
+    PagesComponent,
+    AccountSetingsComponent
   ],
   exports: [
     DashboardComponent,
@@ -30,7 +32,8 @@ import { PagesComponent } from './pages.component';
     ProductoComponent,
     CategoriaComponent,
     PacienteComponent,
-    PagesComponent
+    PagesComponent,
+    AccountSetingsComponent
   ],
   imports: [
     CommonModule,
