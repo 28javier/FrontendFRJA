@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Componentes de las paginas principales
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +13,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { PagesComponent } from './pages.component';
 import { AccountSetingsComponent } from './account-setings/account-setings.component';
+import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-usuario.component';
 
 
 
@@ -24,7 +26,8 @@ import { AccountSetingsComponent } from './account-setings/account-setings.compo
     CategoriaComponent,
     PacienteComponent,
     PagesComponent,
-    AccountSetingsComponent
+    AccountSetingsComponent,
+    RegistroUsuarioComponent
   ],
   exports: [
     DashboardComponent,
@@ -33,12 +36,15 @@ import { AccountSetingsComponent } from './account-setings/account-setings.compo
     CategoriaComponent,
     PacienteComponent,
     PagesComponent,
-    AccountSetingsComponent
+    AccountSetingsComponent,
+    RegistroUsuarioComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }
