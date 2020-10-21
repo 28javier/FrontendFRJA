@@ -27,7 +27,7 @@ export class EspecialidadComponent implements OnInit {
       this.cargando = false;
       this.especialidades = especialidad;
     },
-    erro => {console.log(erro)}
+    erro => {console.log(erro); }
   );
  }
 

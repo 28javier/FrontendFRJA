@@ -68,18 +68,21 @@
                                         <option>Admin_Role</option>
                                         <option>Medic_Role</option>
                                     </select>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('role')"> Seleccione un Role. </small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Especialidad:</label>
                                     <select class="form-control custom-select" formControlName="especialidad">
-                                        <option>--Selecione una Especialidad--</option>
-                                        <option>India</option>
+                                        <option [(value)]="especialidad._id" *ngFor="let especialidad of especialidades">{{especialidad.name}}</option>
+                                        <!-- <option>India</option>
                                         <option>Sri Lanka</option>
-                                        <option>USA</option>
+                                        <option>USA</option> -->
                                     </select>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('especialidad')"> Seleccione una Especialidad. </small>
                                 </div>
+
                             </div>
                         </div>
                         <!-- fin del role y especialidad -->

@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
+
+
+import { Especialidad } from '../../../models/especialidad.model';
+import { EspecialidadService } from '../../../services/especialidad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -8,7 +13,12 @@ import { UsuarioService } from '../../../services/usuario.service';
   styles: [
   ]
 })
-export class RegistroUsuarioComponent {
+export class RegistroUsuarioComponent implements OnInit{
+
+  public especialidades: Especialidad[] = [];
+  public cargando: boolean = true;
+
+
 
   public formSubmitted = false;
   public registroForms = this.fb.group({
@@ -16,17 +26,33 @@ export class RegistroUsuarioComponent {
     nombre2: ['', [Validators.required, Validators.minLength(3)]],
     apellido1: ['', [Validators.required, Validators.minLength(3)]],
     apellido2: ['', [Validators.required, Validators.minLength(3)]],
-    role: [''],
-    especialidad: [''],
+    role: ['', [Validators.required]],
+    especialidad: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    password: ['1234567', [Validators.required]],
-    password2: ['1234567', [Validators.required]]
+    password: ['', [Validators.required]],
+    password2: ['', [Validators.required]]
   }, {
     validators: this.passwordIguales('password', 'password2')
   });
 
-  constructor( private fb: FormBuilder, private usuarioServices: UsuarioService) {
+  constructor( private fb: FormBuilder, public usuarioServices: UsuarioService,
+                public especialidadService: EspecialidadService) {
   }
+
+  ngOnInit(): void {
+    this.cargarEspecialidades();
+  }
+
+  cargarEspecialidades() {
+    this.cargando = true;
+    this.especialidadService.cargarEspecialidades().subscribe(
+      especialidad => {
+        this.cargando = false;
+        this.especialidades = especialidad;
+      },
+      erro => {console.log(erro); }
+    );
+   }
 
   crearUsuario() {
     this.formSubmitted = true;
@@ -40,10 +66,14 @@ export class RegistroUsuarioComponent {
     // }
     // realizamos el posteo del formulario del servicio
     this.usuarioServices.crearUsuario(this.registroForms.value)
-        .subscribe(resp => {
+        .subscribe((resp) => {
           console.log('usuario creado');
-          console.log(resp);
-        }, (err) => console.warn(err));
+          // console.log(resp);
+          Swal.fire('Usuario Creado', resp.message, 'success');
+
+        }, (err) => {
+          Swal.fire('Error', err.error.message, 'error');
+        });
   }
 
   campoNoValido(campo: string): boolean {

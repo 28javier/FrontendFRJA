@@ -1,4 +1,5 @@
 
+// tslint:disable-next-line: class-name
 interface _EspecialidadUser{
     _id: string;
     nombre1: string;
@@ -12,6 +13,7 @@ export class Especialidad {
 
         public name: string,
         public usuario?: _EspecialidadUser,
+        // tslint:disable-next-line: variable-name
         public _id?: string,
 
     ) {

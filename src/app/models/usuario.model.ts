@@ -1,9 +1,10 @@
 
 
-// interface _UsuarioEspecialidad {
-//     _id: string;
-//     name: string;
-// }
+// tslint:disable-next-line: class-name
+interface _EspecialidadU {
+    _id: string;
+    name: string;
+}
 
 export class Usuario {
 
@@ -15,7 +16,8 @@ export class Usuario {
         public email: string,
         public password?: string,
         public role?: string,
-        public especialidad?: string,
+        public especialidad?: _EspecialidadU,
+        // tslint:disable-next-line: variable-name
         public _id?: string,
         public img?: string
     ) {
