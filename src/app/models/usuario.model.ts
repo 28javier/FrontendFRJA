@@ -1,9 +1,9 @@
 
 
-interface _UsuarioEspecialidad {
-    _id: string;
-    name: string;
-}
+// interface _UsuarioEspecialidad {
+//     _id: string;
+//     name: string;
+// }
 
 export class Usuario {
 
@@ -15,7 +15,7 @@ export class Usuario {
         public email: string,
         public password?: string,
         public role?: string,
-        public especialidad?: _UsuarioEspecialidad,
+        public especialidad?: string,
         public _id?: string,
         public img?: string
     ) {

@@ -10,6 +10,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { AccountSetingsComponent } from './account-setings/account-setings.component';
 import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-usuario.component';
+import { EspecialidadComponent } from './especialidad/especialidad.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
      {path: 'categoria', component: CategoriaComponent, data: {titulo: 'Categorias'}},
      {path: 'producto', component: ProductoComponent, data: {titulo: 'Productos'}},
      {path: 'account-settings', component: AccountSetingsComponent, data: {titulo: 'Ajustes de Cuenta'}},
-     {path: 'registro-Usuario', component: RegistroUsuarioComponent, data: {titulo: 'Registro Usuario'}}
+     {path: 'registro-Usuario', component: RegistroUsuarioComponent, data: {titulo: 'Registro Usuario'}},
+     {path: 'especialidad', component: EspecialidadComponent, data: {titulo: 'Especialidad'}},
     ]
    },
 ];

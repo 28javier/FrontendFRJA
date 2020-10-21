@@ -15,6 +15,14 @@ export class SidebarService {
     ]
     },
     {
+      titulo: 'Especialidades',
+      icono: 'mdi mdi-wheelchair-accessibility',
+      submenu: [
+        { titulo: 'Especialidad', url: 'especialidad'},
+        // { titulo: 'Dashboard', url: '/'}
+    ]
+    },
+    {
       titulo: 'Pacientes',
       icono: 'mdi mdi-wheelchair-accessibility',
       submenu: [
