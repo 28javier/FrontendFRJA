@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Mi perfil de Usuario</h4>
+                <h6 class="card-subtitle">Ajustes...</h6>
+                <hr>
+                <form class="form p-t-20" [formGroup]="perfilForms" (submit)="actualizarPerfil()">
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Dirección de Correo</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su Correo" formControlName="email">
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="pwd1">Ingresar Clave antigua</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-lock"></i></div>
+                            <input type="password" class="form-control" id="pwd1" placeholder="Ingrese su clave antigua" formControlName="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd2">Ingrese nueva clave</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-lock"></i></div>
+                            <input type="password" class="form-control" id="pwd2" placeholder="Ingrese su nueva Clave" formControlName="password1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd2">Confirmar nueva clave</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-lock"></i></div>
+                            <input type="password" class="form-control" id="pwd3" placeholder="Confirme la clave" formControlName="password2">
+                        </div>
+                    </div> -->
+                    <hr>
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="perfilForms.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar Cambios</button>
+                    <!-- <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">Imagen del Usuario</h6>
+                <div class="text-center mb-3">
+                    <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="img-avatar">
+                    <img *ngIf="imgTemp" [src]="imgTemp" class="img-avatar">
+
+                </div>
+                <input type="file" name="" id="" (change)="cambiarImagen($event.target.files[0])">
+                <hr>
+                <br>
+                <button type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="!imagenSubir" (click)="subirImagen()">
+                    <i class="fa fa-save"></i>
+                    Cambiar Imagen</button>
+            </div>
+        </div>
+    </div>
+</div>

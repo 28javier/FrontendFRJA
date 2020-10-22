@@ -17,9 +17,7 @@ import { PagesComponent } from './pages.component';
 import { AccountSetingsComponent } from './account-setings/account-setings.component';
 import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-usuario.component';
 import { EspecialidadComponent } from './especialidad/especialidad.component';
-
-
-
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +29,8 @@ import { EspecialidadComponent } from './especialidad/especialidad.component';
     PagesComponent,
     AccountSetingsComponent,
     RegistroUsuarioComponent,
-    EspecialidadComponent
+    EspecialidadComponent,
+    PerfilComponent
   ],
   exports: [
     DashboardComponent,
@@ -42,7 +41,8 @@ import { EspecialidadComponent } from './especialidad/especialidad.component';
     PagesComponent,
     AccountSetingsComponent,
     RegistroUsuarioComponent,
-    EspecialidadComponent
+    EspecialidadComponent,
+    PerfilComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { AccountSetingsComponent } from './account-setings/account-setings.component';
 import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-usuario.component';
 import { EspecialidadComponent } from './especialidad/especialidad.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
      {path: 'account-settings', component: AccountSetingsComponent, data: {titulo: 'Ajustes de Cuenta'}},
      {path: 'registro-Usuario', component: RegistroUsuarioComponent, data: {titulo: 'Registro Usuario'}},
      {path: 'especialidad', component: EspecialidadComponent, data: {titulo: 'Especialidad'}},
+     {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de Usuario'}},
     ]
    },
 ];

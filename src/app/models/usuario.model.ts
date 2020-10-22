@@ -1,3 +1,6 @@
+import { environment } from '../../environments/environment';
+
+const base_url = environment.base_url;
 
 
 // tslint:disable-next-line: class-name
@@ -22,4 +25,17 @@ export class Usuario {
         public img?: string
     ) {
     }
-}
+    // imprimirUsuario(){
+    //     console.log(this.email);
+    // }
+
+    // {{url}}upload/usuarios/jinjk
+    get imagenUrl(){
+        // console.log(this.img);
+        if (this.img) {
+            return `${base_url}/upload/usuarios/${this.img}`;
+        } else {
+            return `${base_url}/upload/usuarios/no-img`;
+        }
+    }
+} 

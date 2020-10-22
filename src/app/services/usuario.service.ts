@@ -6,6 +6,7 @@ import { RegistroUsuario } from '../interfaces/registro.usuario.interface';
 import { catchError, map, tap} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { Usuario } from '../models/usuario.model';
 
 
 
@@ -16,23 +17,37 @@ const base_url = environment.base_url;
 })
 export class UsuarioService {
 
+  public usuario: Usuario;
+
   constructor( private http: HttpClient,
                private router: Router) {
 
    }
 
+   // obtener el token en cada ruta
+   get token(){
+     return localStorage.getItem('token') || '';
+   }
+   get uid(){
+     return this.usuario._id || '';
+   }
+
    // funcion para no poder ingresar en las demas pantallas si no esta logueado
    validarToken(): Observable<boolean> {
-     const token = localStorage.getItem('token') || '';
+    //  const token = localStorage.getItem('token') || '';
      return this.http.get(`${base_url}/login/renew`, {
        headers: {
-         'x-token': token
+         'x-token': this.token
        }
      }).pipe(
-       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+       map((resp: any) => {
+        //  console.log(resp);
+         const {nombre1, nombre2, apellido1, apellido2, email, role, especialidad, _id, img =''} = resp.usuario;
+         this.usuario = new Usuario(nombre1, nombre2, apellido1, apellido2, email, '', role, especialidad, _id, img);
+        //  this.usuario.imprimirUsuario();
+         localStorage.setItem('token', resp.token);
+         return true;
        }),
-       map(resp => true),
        catchError(error => of(false))
      );
    }
@@ -60,7 +75,14 @@ export class UsuarioService {
   );
  }
 
+ actualizarPerfil(data: {email: string, password: string}) {
+   return this.http.put(`${base_url}/usuarios/${this.uid}`, data, {
+    headers: {
+      'x-token': this.token
+    }
+   });
 
+ }
 
 
 }
