@@ -1,16 +1,101 @@
-<div class="text-right">
+<div class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar Usuario por el apellido..." (keyup)="buscar(txtTermino.value)" #txtTermino>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="text-right animate fadeIn fast">
     <button type="button" routerLink="/dashboard/registro-Usuario" class="btn btn-info align-content-end">
         <i class="fa fa-plus"></i> 
           Agregar nuevo Usuario
     </button>
+</div> -->
 
+<div class="row mt-2 animate fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando...</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
 </div>
 
-<div class="row mt-3">
+<div class="row animate fadeIn fast" *ngIf="!cargando">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h1>Usuarios</h1>
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Total de Usuarios ({{totalUsuario}}) - {{desde}}</h4>
+                        <h6 class="card-subtitle">Usuarios registrados en la Aplicación</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right animate fadeIn fast">
+                            <button type="button" routerLink="/dashboard/registro-Usuario" class="btn btn-info align-content-end">
+                            <i class="fa fa-plus"></i> 
+                            Agregar nuevo Usuario
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="">
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre2</th>
+                                <th>Apellido1</th>
+                                <th>Apellido2</th>
+                                <th>Correo</th>
+                                <th>Role</th>
+                                <th>Especialidad</th>
+                                <th class="text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let usuario of usuarios">
+                            <tr>
+                                <td class="text-center">
+                                    <img [src]="usuario.imagenUrl" class="avatar" alt="Imagen del Usuario">
+                                </td>
+                                <td>{{usuario.nombre2}}</td>
+                                <td>{{usuario.apellido1}}</td>
+                                <td>{{usuario.apellido2}}</td>
+                                <td>{{usuario.email}}</td>
+                                <td>
+
+                                    <select class="form-control" [(ngModel)]="usuario.role" (change)="cambiarRol(usuario)">
+                                        <option value="Secrt_Role">Secrt_Role</option>
+                                        <option value="Admin_Role">Admin_Role</option>
+                                        <option value="Medic_Role">Medic_Role</option>
+                                    </select>
+                                    <!-- <span class="label label-info ">{{usuario.role}}</span> -->
+                                    <!-- <span class="label label-danger">{{usuario.role}}</span> -->
+
+                                </td>
+                                <td>
+                                    <span class="label label-success">{{usuario.especialidad.name}}</span></td>
+                                <td class="text-nowrap w100 text-center">
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" class="cursor" data-original-title="Eliminar" (click)="eliminarUsuario(usuario)">
+                                        <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="txtTermino.value.length === 0">
+                    <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anterior</button> &nbsp;
+                    <button (click)="cambiarPagina(5)" class="btn btn-secondary">Siguiente</button>
+                </div>
             </div>
         </div>
     </div>

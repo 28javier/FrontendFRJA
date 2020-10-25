@@ -42,6 +42,16 @@ export class EspecialidadComponent implements OnInit {
  }
 
  borrarEspecialidad(especialidad: Especialidad){
+   Swal.fire({
+    title: '¿Desea Eliminar el Usuario?',
+    text: `Esta a punto de eliminar a ${especialidad.name}`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si eliminarlo'
+  }).then((result) => {
+    if (result.value) {
   this.especialidadService.deleteEspecialidades(especialidad._id)
     .subscribe( resp => {
       this.cargarEspecialidades();
@@ -50,6 +60,8 @@ export class EspecialidadComponent implements OnInit {
       Swal.fire('Error', err.error.message, 'error');
     });
 // console.log(especialidad);
+ }
+});
 }
 
 async abriSwictAlert(){

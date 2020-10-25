@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { LoginForm } from '../interfaces/login.interface';
-import { RegistroUsuario } from '../interfaces/registro.usuario.interface';
 import { catchError, map, tap} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+// modelo
 import { Usuario } from '../models/usuario.model';
+// interfaces
+import { RegistroUsuario } from '../interfaces/registro.usuario.interface';
+import { LoginForm } from '../interfaces/login.interface';
+import { CargarUsuarios } from '../interfaces/cargar-usuarios';
 
 
 
@@ -30,6 +33,14 @@ export class UsuarioService {
    }
    get uid(){
      return this.usuario._id || '';
+   }
+
+   get headers() {
+     return {
+      headers: {
+        'x-token': this.token
+      }
+     };
    }
 
    // funcion para no poder ingresar en las demas pantallas si no esta logueado
@@ -75,14 +86,41 @@ export class UsuarioService {
   );
  }
 
- actualizarPerfil(data: {email: string, password: string}) {
-   return this.http.put(`${base_url}/usuarios/${this.uid}`, data, {
-    headers: {
-      'x-token': this.token
-    }
-   });
+ actualizarPerfil(data: {email: string, password: string, role: string}) {
 
+  data = {
+    ...data,
+    role: this.usuario.role
+  };
+  return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers);
  }
+
+ cargarUsuarios(desde: number = 0) {
+  // localhost:3000/api/usuarios?desde=0
+  const url = `${base_url}/usuarios?desde=${desde}`;
+  return this.http.get<CargarUsuarios>(url, this.headers)
+          .pipe(
+            map( resp => {
+                const usuarios = resp.usuarios.map(
+                  user => new Usuario(user.nombre1, user.nombre2, user.apellido1,
+                    user.apellido2, user.email, '', user.role, user.especialidad,
+                    user._id, user.img));
+                return {totalUsuario: resp.totalUsuario,
+                usuarios};
+            })
+          );
+ }
+
+ eliminarUsuario(usuario: Usuario) {
+  //  console.log('eliminado');
+   const url = `${base_url}/usuarios/${usuario._id}`;
+   return this.http.delete(url, this.headers);
+ }
+
+ actualizarRole(usuario: Usuario) {
+  return this.http.put(`${base_url}/usuarios/${usuario._id}`, usuario, this.headers);
+ }
+
 
 
 }

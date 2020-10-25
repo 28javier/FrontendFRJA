@@ -32,7 +32,9 @@ export class Usuario {
     // {{url}}upload/usuarios/jinjk
     get imagenUrl(){
         // console.log(this.img);
-        if (this.img) {
+        if (!this.img) {
+            return `${base_url}/upload/usuarios/no-img`;
+        } else if (this.img) {
             return `${base_url}/upload/usuarios/${this.img}`;
         } else {
             return `${base_url}/upload/usuarios/no-img`;

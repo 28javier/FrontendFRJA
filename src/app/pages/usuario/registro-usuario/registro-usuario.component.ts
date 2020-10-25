@@ -28,7 +28,7 @@ export class RegistroUsuarioComponent implements OnInit{
     apellido2: ['', [Validators.required, Validators.minLength(3)]],
     role: ['', [Validators.required]],
     especialidad: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     password: ['', [Validators.required]],
     password2: ['', [Validators.required]]
   }, {
@@ -36,7 +36,7 @@ export class RegistroUsuarioComponent implements OnInit{
   });
 
   constructor( private fb: FormBuilder, public usuarioServices: UsuarioService,
-                public especialidadService: EspecialidadService) {
+               public especialidadService: EspecialidadService) {
   }
 
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class RegistroUsuarioComponent implements OnInit{
     if (this.registroForms.invalid) {
         return ;
       //  si era valid ojo console.log('Formulario Posteado');
-    } 
+    }
     // else {
     //   console.log('Formulario Incorecto !!!');
     // }
@@ -100,7 +100,7 @@ export class RegistroUsuarioComponent implements OnInit{
       const pass1Control = formGroup.get(pass1Name);
       const pass2Control = formGroup.get(pass2Name);
       if (pass1Control.value === pass2Control.value) {
-          pass2Control.setErrors(null)
+          pass2Control.setErrors(null);
         }else{
           pass2Control.setErrors({noEsIgual: true});
         }
