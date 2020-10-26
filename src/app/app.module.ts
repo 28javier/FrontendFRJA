@@ -9,6 +9,8 @@ import { PagesModule } from './pages/pages.module';
 
 // Importcacion del Modulo de auth para el modulo principal que es este
 import { AuthModule } from './auth/auth.module';
+// Importcacion del Modulo de la carpeta components para el modulo principal que es este
+import { ComponentsModule } from './components/components.module';
 
 // componentes
 import { AppComponent } from './app.component';
@@ -27,7 +29,8 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    AuthModule
+    AuthModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

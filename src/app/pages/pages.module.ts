@@ -18,6 +18,7 @@ import { AccountSetingsComponent } from './account-setings/account-setings.compo
 import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-usuario.component';
 import { EspecialidadComponent } from './especialidad/especialidad.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }
