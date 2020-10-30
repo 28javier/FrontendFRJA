@@ -118,7 +118,8 @@ export class UsuarioService {
  }
 
  actualizarRole(usuario: Usuario) {
-  return this.http.put(`${base_url}/usuarios/${usuario._id}`, usuario, this.headers);
+   const url = `${base_url}/usuarios/${usuario._id}`;
+   return this.http.put(url, usuario, this.headers);
  }
 
 

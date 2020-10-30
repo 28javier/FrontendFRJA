@@ -11,13 +11,16 @@ import Swal from 'sweetalert2';
 })
 export class EspecialidadComponent implements OnInit {
 
+  public totalEspecialidad: number = 0;
   public especialidades: Especialidad[] = [];
+  public desde: number = 0;
   public cargando: boolean = true;
 
   constructor( public especialidadService: EspecialidadService) { }
 
   ngOnInit(): void {
      this.cargarEspecialidades();
+     this.cargarEspecialidadPa();
   }
 
  cargarEspecialidades() {
@@ -29,6 +32,25 @@ export class EspecialidadComponent implements OnInit {
     },
     erro => {console.log(erro); }
   );
+ }
+
+ cargarEspecialidadPa() {
+   this.especialidadService.cargarEspecialidadPagina(this.desde)
+   .subscribe( ({totalEspecialidad, especialidad}) => {
+    this.totalEspecialidad = totalEspecialidad;
+    if (especialidad.length !== 0) {
+      this.especialidades = especialidad;
+    }
+   });
+ }
+ cambiarPagina(valor: number) {
+  this.desde += valor;
+  if (this.desde < 0) {
+    this.desde = 0;
+  } else if (this.desde >= this.totalEspecialidad) {
+    this.desde -= valor;
+  }
+  this.cargarEspecialidadPa();
  }
 
  actualizarEspecialidad(especialidad: Especialidad){

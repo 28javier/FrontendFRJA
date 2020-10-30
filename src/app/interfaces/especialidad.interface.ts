@@ -7,3 +7,5 @@ export interface EspecialidadI {
      updateAt: string;
      usuario: any;
 }
+
+
