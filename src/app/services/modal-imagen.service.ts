@@ -15,6 +15,7 @@ export class ModalImagenService {
   public id: string;
   public img: string;
   public nuevaImagen: EventEmitter<string> = new EventEmitter<string>();
+
   get ocultarModal(){
     return this._ocultarModal;
   }
@@ -35,6 +36,6 @@ export class ModalImagenService {
   cerrarModal() {
     this._ocultarModal = true;
   }
-  
+
   constructor() { }
 }

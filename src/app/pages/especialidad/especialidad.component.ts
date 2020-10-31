@@ -35,11 +35,13 @@ export class EspecialidadComponent implements OnInit {
  }
 
  cargarEspecialidadPa() {
+   this.cargando = true;
    this.especialidadService.cargarEspecialidadPagina(this.desde)
    .subscribe( ({totalEspecialidad, especialidad}) => {
     this.totalEspecialidad = totalEspecialidad;
     if (especialidad.length !== 0) {
       this.especialidades = especialidad;
+      this.cargando = false;
     }
    });
  }

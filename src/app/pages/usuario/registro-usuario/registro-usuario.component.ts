@@ -69,7 +69,9 @@ export class RegistroUsuarioComponent implements OnInit{
         .subscribe((resp) => {
           console.log('usuario creado');
           // console.log(resp);
+          this.registroForms.reset();
           Swal.fire('Usuario Creado', resp.message, 'success');
+          
 
         }, (err) => {
           Swal.fire('Error', err.error.message, 'error');

@@ -1,0 +1,80 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text" class="form-control" placeholder="Buscar Categoria..." />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>
+<div class="row animate fadeIn fast" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Categorias ({{totalCa}})</h4>
+                        <h6 class="card-subtitle">Categorias registradas en el Sistema</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right">
+                            <button type="button" class="btn btn-info" (click)="abrirModalCategoria()">
+                            <i class="fa fa-plus"></i> 
+                              Agregar nueva Categoria
+                        </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="bg-dark">
+                            <tr class="text-white">
+                                <th>Categorias</th>
+                                <th>Descripción</th>
+                                <th class="text-nowrap text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let categoria of categorias">
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Nombre de la Categoria" [(ngModel)]="categoria.nombreCategoria">
+                                </td>
+                                <td>
+                                    <textarea class="form-control" [(ngModel)]="categoria.descripcionCategoria"></textarea>
+                                    <!-- <input type="text" class="form-control" placeholder="Descrición" [(ngModel)]="categoria.descripcionCategoria"> -->
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a data-toggle="tooltip" class="cursor" data-original-title="Editar">
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                    </a>
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="eliminarCategoria(categoria)">
+                                        <i class="fa fa-close text-danger"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp;
+                    <button (click)="cambiarPagina(5)" class="btn btn-secondary">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

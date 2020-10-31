@@ -8,7 +8,8 @@ interface _CategoriaUser{
 export class Categoria {
     constructor(
 
-        public name: string,
+        public nombreCategoria: string,
+        public descripcionCategoria: string,
         public usuario?: _CategoriaUser,
         public _id?: string,
 
