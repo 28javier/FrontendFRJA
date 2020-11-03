@@ -1,0 +1,37 @@
+<div class="fondo-modal-imagen animate fadeIn fast" [class.oculto]="categoriaService.ocultarModalA">
+    <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Actualizar Categoria</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="cerrarModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off" [formGroup]="categoriaForms">
+
+                        <div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Nombre de la Categoria:</label>
+                                <input type="text" class="form-control" id="recipient-name" formControlName="nombreCategoria">
+                                <small class="form-control-feedback text-danger" *ngIf="campoNoValido('nombreCategoria')"> El nombre de la Categoria es Obligatorio. </small>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="message-text" class="control-label">Descripción de la Categoria:</label>
+                                <textarea class="form-control" id="message-text" formControlName="descripcionCategoria">
+                                    
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal" (click)="cerrarModal()">Cerrar</button>
+                            <button type="submit" class="btn btn-info waves-effect waves-light">Actualizar Categoria</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

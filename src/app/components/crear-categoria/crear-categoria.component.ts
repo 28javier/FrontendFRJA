@@ -25,7 +25,7 @@ export class CrearCategoriaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-     // crear categoria en modales
+     // metodo cerrar modal
      cerrarModal() {
       this.categoriaService.cerrarModal();
     }

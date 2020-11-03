@@ -54,11 +54,7 @@ export class CategoriaComponent implements OnInit {
     this.categoriaService.abrirModalCategoria();
   }
 
-  abrirModalCategoriaActualizar(){
-    // console.log(usuario);
-    this.categoriaService.abrirModalCategoria();
-  }
-
+ 
 
   eliminarCategoria(categoria: Categoria) {
     Swal.fire({
@@ -78,13 +74,31 @@ export class CategoriaComponent implements OnInit {
       }, err => {
         Swal.fire('Error', err.error.message, 'error');
       });
-  // console.log(especialidad);
    }
   });
   }
 
-  actualizarCategeoria(categoria: Categoria) {
-    console.log(categoria);
-    this.categoriaService.abrirModalCategoria();
+  actualizarCategoria(categoria: Categoria) {
+    // console.log(categoria);
+    Swal.fire({
+      title: '¿Desea Editar esta Categoria?',
+      text: `Esta a punto de Editar a ${categoria.nombreCategoria}`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si Editarlo'
+    }).then((result) => {
+      if (result.value) {
+    this.categoriaService.actualizarCategoria(categoria._id, categoria.nombreCategoria, categoria.descripcionCategoria)
+    .subscribe(resp => {
+      Swal.fire('Actualizado', categoria.nombreCategoria, 'info');
+      this.cargaCategoriaPa();
+    }, err => {
+      Swal.fire('Error', err.error.message, 'error');
+    });
+    }
+    });
   }
+
 }

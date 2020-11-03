@@ -89,7 +89,7 @@ export class EspecialidadComponent implements OnInit {
 }
 
 async abriSwictAlert(){
-  const {value} = await Swal.fire<string>({
+  const {value = ''} = await Swal.fire<string>({
     title: 'Agregar Especialidad',
     text: 'Ingrese una nueva Especialidad',
     input: 'text',

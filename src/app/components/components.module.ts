@@ -4,15 +4,23 @@ import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CrearCategoriaComponent } from './crear-categoria/crear-categoria.component';
+import { ModalActualizarCategoriaComponent } from './modal-actualizar-categoria/modal-actualizar-categoria.component';
 
 
 
 @NgModule({
   declarations: [ModalImagenComponent,
-    CrearCategoriaComponent
+    CrearCategoriaComponent,
+    ModalActualizarCategoriaComponent,
+    
+
     ],
-  exports:[ ModalImagenComponent,
-    CrearCategoriaComponent],
+  exports: [ ModalImagenComponent,
+    CrearCategoriaComponent,
+    ModalActualizarCategoriaComponent,
+
+    
+  ],
   imports: [
     CommonModule,
     FormsModule,

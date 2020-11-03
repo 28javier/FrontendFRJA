@@ -6,6 +6,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Especialidad } from '../../../models/especialidad.model';
 import { EspecialidadService } from '../../../services/especialidad.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -36,7 +37,8 @@ export class RegistroUsuarioComponent implements OnInit{
   });
 
   constructor( private fb: FormBuilder, public usuarioServices: UsuarioService,
-               public especialidadService: EspecialidadService) {
+               public especialidadService: EspecialidadService,
+               public router: Router) {
   }
 
   ngOnInit(): void {
@@ -69,10 +71,8 @@ export class RegistroUsuarioComponent implements OnInit{
         .subscribe((resp) => {
           console.log('usuario creado');
           // console.log(resp);
-          this.registroForms.reset();
           Swal.fire('Usuario Creado', resp.message, 'success');
-          
-
+          this.router.navigateByUrl(`/dashboard/usuario`);
         }, (err) => {
           Swal.fire('Error', err.error.message, 'error');
         });

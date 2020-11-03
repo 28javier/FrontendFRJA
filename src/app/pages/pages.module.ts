@@ -19,6 +19,8 @@ import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-us
 import { EspecialidadComponent } from './especialidad/especialidad.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ComponentsModule } from '../components/components.module';
+import { RegistroProductoComponent } from './producto/registro-producto/registro-producto.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ComponentsModule } from '../components/components.module';
     AccountSetingsComponent,
     RegistroUsuarioComponent,
     EspecialidadComponent,
-    PerfilComponent
+    PerfilComponent,
+    RegistroProductoComponent,
   ],
   exports: [
     DashboardComponent,
@@ -43,7 +46,9 @@ import { ComponentsModule } from '../components/components.module';
     AccountSetingsComponent,
     RegistroUsuarioComponent,
     EspecialidadComponent,
-    PerfilComponent
+    PerfilComponent,
+    RegistroProductoComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -52,7 +57,8 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ]
 })
 export class PagesModule { }

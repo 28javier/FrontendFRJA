@@ -58,7 +58,7 @@
                                     <!-- <input type="text" class="form-control" placeholder="Descrición" [(ngModel)]="categoria.descripcionCategoria"> -->
                                 </td>
                                 <td class="text-nowrap text-center">
-                                    <a data-toggle="tooltip" class="cursor" data-original-title="Editar">
+                                    <a data-toggle="tooltip" class="cursor" data-original-title="Editar" (click)="actualizarCategoria(categoria)">
                                         <i class="fa fa-pencil text-inverse m-r-10"></i>
                                     </a>
                                     <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="eliminarCategoria(categoria)">

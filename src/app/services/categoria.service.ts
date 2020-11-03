@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CargarCategoria } from '../interfaces/cargar-categoria';
 import { CategoriaI } from '../interfaces/categoria.interface';
+import { map } from 'rxjs/operators';
+import { Categoria } from '../models/categoria.model';
 
 
 
@@ -15,6 +17,8 @@ const base_url = environment.base_url;
 export class CategoriaService {
 
   private _ocultarModal: boolean = true;
+  private _ocultarModalA: boolean = true;
+
   public cargaCategoria: EventEmitter<any> = new EventEmitter<any>();
 
   constructor( private http: HttpClient) { }
@@ -29,6 +33,18 @@ export class CategoriaService {
   cerrarModal() {
       this._ocultarModal = true;
   }
+
+   // modal para crear la categoria
+get ocultarModalA(){
+    return this._ocultarModalA;
+}
+abrirModalCategoriaA() {
+  this._ocultarModalA = false;
+}
+cerrarModalA() {
+    this._ocultarModalA = true;
+}
+
   get token(){
     return localStorage.getItem('token') || '';
   }
@@ -40,6 +56,16 @@ export class CategoriaService {
     };
   }
 
+  //carga de todas las especialidades
+  cargarCategorias() {
+    // localhost:3000/api/categorias
+    const url = `${base_url}/categorias`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp:{ok: boolean, categoria: Categoria[]}) => resp.categoria)
+    );
+
+  }
   // mostar la categoria paginada
   cargarCategoriaPaginada( desde: number = 0) {
     // localhost:3000/api/categorias/paginado?desde=0
@@ -47,7 +73,16 @@ export class CategoriaService {
     return this.http.get<CargarCategoria>(url, this.headers);
   }
 
-  // tslint:disable-next-line: adjacent-overload-signatures
+  categoriaID(id: string) {
+    // localhost:3000/api/categorias/5f74e6f50e2f1c18bcb2dba3
+    const url = `${base_url}/categorias/${id}`;
+    return this.http.get(url, this.headers)
+    .pipe(
+      map((resp: {ok: boolean, categoria: Categoria}) => resp.categoria)
+    );
+  }
+
+
   crearCategoria(formData: CategoriaI) {
     // localhost:3000/api/categorias
     const url = `${base_url}/categorias`;
@@ -56,7 +91,6 @@ export class CategoriaService {
 
   actualizarCategoria( _id: string, nombreCategoria: string, descripcionCategoria: string) {
     // localhost:3000/api/categorias/5f74e6f50e2f1c18bcb2dba3
-    this._ocultarModal = false;
     const url = `${base_url}/categorias/${_id}`;
     return this.http.put(url, {nombreCategoria, descripcionCategoria}, this.headers);
   }

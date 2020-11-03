@@ -14,9 +14,10 @@ import { Subscription } from 'rxjs';
   ]
 })
 export class UsuarioComponent implements OnInit, OnDestroy {
+
   public totalUsuario: number = 0;
-  public usuarios: Usuario[] =[];
-  public usuariosTemp: Usuario[] =[];
+  public usuarios: Usuario[] = [];
+  public usuariosTemp: Usuario[] = [];
   public imgSusb: Subscription;
   public desde: number = 0;
   public cargando: boolean = true;
@@ -69,9 +70,9 @@ export class UsuarioComponent implements OnInit, OnDestroy {
     if (termino.length === 0) {
       return this.usuarios = this.usuariosTemp;
     }
-    this.busquedaService.busqueda('usuarios', termino)
-      .subscribe(resp => {
-        this.usuarios = resp;
+    this.busquedaService.buscar('usuarios', termino)
+      .subscribe( resultados => {
+          // this.usuarios = resultados;
       });
   }
 
