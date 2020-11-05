@@ -75,10 +75,11 @@
                                 </td>
                                 <td class="text-nowrap w100 text-center">
                                     <a [routerLink]="['/dashboard/registro-producto', producto._id]" data-toggle="tooltip" data-original-title="Editar Producto" class="cursor">
-                                        <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                        <i class="fa fa-pencil-square text-dark m-r-10"></i>
+                                        <!-- text-inverse m-r-10 -->
                                     </a>
                                     <a (click)="borrarProducto(producto)" data-toggle="tooltip" data-original-title="Eliminar Producto" class="cursor">
-                                        <i class="fa fa-close text-danger"></i>
+                                        <i class="fa fa-window-close text-danger"></i>
                                     </a>
                                 </td>
                             </tr>

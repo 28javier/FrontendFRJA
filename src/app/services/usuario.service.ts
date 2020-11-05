@@ -111,6 +111,16 @@ export class UsuarioService {
           );
  }
 
+ obtenerUsuarioID(id: string){
+  // localhost:3000/api/usuarios/5f96ffca65784e2c48b1ac53
+  const url = `${base_url}/usuarios/${id}`;
+  return this.http.get(url, this.headers)
+  .pipe(
+    map((resp: {ok: boolean, usuario: Usuario}) => resp.usuario)
+  );
+
+ }
+
  eliminarUsuario(usuario: Usuario) {
   //  console.log('eliminado');
    const url = `${base_url}/usuarios/${usuario._id}`;

@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { Producto } from '../models/producto.model';
+import { Paciente } from '../models/paciente.model';
 
 
 
@@ -38,8 +39,11 @@ export class BusquedasService {
         user._id, user.img));
   }
 
-  private transformarProductos(resultado: any[]): Producto[] {
-    return resultado;
+  private transformarProductos(resultados: any[]): Producto[] {
+    return resultados;
+  }
+  private transformarPacientes(resultados: any[]): Paciente[] {
+    return resultados;
   }
 
   buscar(tipo: 'usuarios'|'productos'|'pacientes', termino: string) {
@@ -50,11 +54,14 @@ export class BusquedasService {
         map((resp: any) =>
          {
          switch (tipo) {
-           case 'usuarios':
+            case 'usuarios':
              return  this.transformarUsuarios(resp.resultados);
 
-             case 'productos':
+            case 'productos':
              return  this.transformarProductos(resp.resultados);
+
+            case 'pacientes':
+              return  this.transformarPacientes(resp.resultados);
 
            default:
              return [];

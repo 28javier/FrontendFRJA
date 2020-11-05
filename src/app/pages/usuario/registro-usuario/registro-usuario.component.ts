@@ -6,7 +6,8 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Especialidad } from '../../../models/especialidad.model';
 import { EspecialidadService } from '../../../services/especialidad.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -18,31 +19,36 @@ export class RegistroUsuarioComponent implements OnInit{
 
   public especialidades: Especialidad[] = [];
   public cargando: boolean = true;
-
-
-
   public formSubmitted = false;
-  public registroForms = this.fb.group({
-    nombre1: ['', [Validators.required, Validators.minLength(3)]],
-    nombre2: ['', [Validators.required, Validators.minLength(3)]],
-    apellido1: ['', [Validators.required, Validators.minLength(3)]],
-    apellido2: ['', [Validators.required, Validators.minLength(3)]],
-    role: ['', [Validators.required]],
-    especialidad: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-    password: ['', [Validators.required]],
-    password2: ['', [Validators.required]]
-  }, {
-    validators: this.passwordIguales('password', 'password2')
-  });
+  public registroForms: FormGroup;
+  public usuarioSelecionado: Usuario;
+
 
   constructor( private fb: FormBuilder, public usuarioServices: UsuarioService,
                public especialidadService: EspecialidadService,
-               public router: Router) {
+               public router: Router,
+               private activateRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.activateRoute.params.subscribe(({id}) => {
+      console.log(id);
+      // this.cargarUsuarioId(id);
+    });
     this.cargarEspecialidades();
+    this.registroForms = this.fb.group({
+      nombre1: ['', [Validators.required, Validators.minLength(3)]],
+      nombre2: ['', [Validators.required, Validators.minLength(3)]],
+      apellido1: ['', [Validators.required, Validators.minLength(3)]],
+      apellido2: ['', [Validators.required, Validators.minLength(3)]],
+      role: ['1', [Validators.required]],
+      especialidad: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password: ['', [Validators.required]],
+      password2: ['', [Validators.required]]
+    }, {
+      validators: this.passwordIguales('password', 'password2')
+    });
   }
 
   cargarEspecialidades() {
@@ -108,4 +114,19 @@ export class RegistroUsuarioComponent implements OnInit{
         }
     }
   }
+
+  // cargarUsuarioId(id: string) {
+  //   if (id === 'nuevo') {
+  //     return;
+  //   }
+  //   this.usuarioServices.obtenerUsuarioID(id)
+  //   .subscribe(usuario => {
+  //     console.log(usuario);
+  //     const {nombre1, nombre2, apellido1, apellido2, role, especialidad: {_id}, email} = usuario;
+  //     this.usuarioSelecionado = usuario;
+  //     this.registroForms.setValue({
+  //       nombre1, nombre2, apellido1, apellido2, role, especialidad: _id, email
+  //     });
+  //   });
+  // }
 }

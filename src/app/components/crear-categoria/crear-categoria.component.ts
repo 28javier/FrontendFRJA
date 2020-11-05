@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../services/categoria.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Categoria } from '../../models/categoria.model';
 
 @Component({
   selector: 'app-crear-categoria',
@@ -13,16 +15,18 @@ export class CrearCategoriaComponent implements OnInit {
 
 
   public formSubmitted = false;
-  public categoriaForms = this.fb.group({
+  public categoriaForms: FormGroup;
+
+  constructor(public categoriaService: CategoriaService,
+              private fb: FormBuilder,
+              ) { }
+
+  ngOnInit(): void {
+    this.categoriaForms = this.fb.group({
       nombreCategoria: ['', [Validators.required, Validators.minLength(3)]],
       descripcionCategoria: [''],
   });
 
-
-  constructor(public categoriaService: CategoriaService,
-              private fb: FormBuilder) { }
-
-  ngOnInit(): void {
   }
 
      // metodo cerrar modal

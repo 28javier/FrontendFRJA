@@ -56,13 +56,13 @@ cerrarModalA() {
     };
   }
 
-  //carga de todas las especialidades
+  // carga de todas las especialidades
   cargarCategorias() {
     // localhost:3000/api/categorias
     const url = `${base_url}/categorias`;
     return this.http.get(url, this.headers)
     .pipe(
-      map((resp:{ok: boolean, categoria: Categoria[]}) => resp.categoria)
+      map((resp: {ok: boolean, categoria: Categoria[]}) => resp.categoria)
     );
 
   }
@@ -89,12 +89,14 @@ cerrarModalA() {
     return this.http.post(url, formData, this.headers);
   }
 
+  // tslint:disable-next-line: variable-name
   actualizarCategoria( _id: string, nombreCategoria: string, descripcionCategoria: string) {
     // localhost:3000/api/categorias/5f74e6f50e2f1c18bcb2dba3
     const url = `${base_url}/categorias/${_id}`;
     return this.http.put(url, {nombreCategoria, descripcionCategoria}, this.headers);
   }
 
+  // tslint:disable-next-line: variable-name
   eliminarCategoria( _id: string) {
     // localhost:3000/api/categorias/5f74e6f50e2f1c18bcb2dba3
     const url = `${base_url}/categorias/${_id}`;

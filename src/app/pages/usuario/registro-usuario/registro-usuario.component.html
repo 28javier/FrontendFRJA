@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label>Role:</label>
                                     <select class="form-control custom-select " formControlName="role">
-                                        <option>--Selecione un Role--</option>
+                                        <option value="1">--Selecione un Role--</option>
                                         <option>Secrt_Role</option>
                                         <option>Admin_Role</option>
                                         <option>Medic_Role</option>
@@ -76,7 +76,9 @@
                                 <div class="form-group">
                                     <label>Especialidad:</label>
                                     <select class="form-control custom-select" formControlName="especialidad">
-                                        <option [(value)]="especialidad._id" *ngFor="let especialidad of especialidades">{{especialidad.name}}</option>
+                                        <option value="">Seleccione una Especialidad</option>
+                                        <option [value]="especialidad._id" 
+                                        *ngFor="let especialidad of especialidades">{{especialidad.name}}</option>
                                         <!-- <option>India</option>
                                         <option>Sri Lanka</option>
                                         <option>USA</option> -->

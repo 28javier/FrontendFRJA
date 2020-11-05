@@ -14,6 +14,7 @@ import { RegistroUsuarioComponent } from './usuario/registro-usuario/registro-us
 import { EspecialidadComponent } from './especialidad/especialidad.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { RegistroProductoComponent } from './producto/registro-producto/registro-producto.component';
+import { RegistroPacienteComponent } from './paciente/registro-paciente/registro-paciente.component';
 
 
 const routes: Routes = [
@@ -23,9 +24,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
      {path: '', component: DashboardComponent, data: {titulo: 'Dasboard'}},
-     {path: 'usuario', component: UsuarioComponent, data: {titulo: 'Usuarios'}},
-     {path: 'registro-Usuario', component: RegistroUsuarioComponent, data: {titulo: 'Mantenimiento Usuarios'}},
-     {path: 'paciente', component: PacienteComponent, data: {titulo: 'Pacientes'}},
+     {path: 'usuario', component: UsuarioComponent, data: {titulo: 'Mantenimiento Usuarios'}},
+     {path: 'registro-Usuario/:id', component: RegistroUsuarioComponent, data: {titulo: 'Mantenimiento Usuarios'}},
+     {path: 'paciente', component: PacienteComponent, data: {titulo: 'Mantenimiento Pacientes'}},
+     {path: 'registro-paciente/:id', component: RegistroPacienteComponent, data: {titulo: 'Mantenimiento Pacientes'}},
      {path: 'categoria', component: CategoriaComponent, data: {titulo: 'Categorias'}},
      {path: 'producto', component: ProductoComponent, data: {titulo: 'Mantenimiento Productos'}},
     //  {path: 'registro-producto', component: RegistroProductoComponent, data: {titulo: 'Mantenimiento Productos'}},

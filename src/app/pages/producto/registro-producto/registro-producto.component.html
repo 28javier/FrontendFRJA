@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card ">
             <div class="card-header bg-info">
-                <h4 class="m-b-0 text-white">Registro de un nuevo producto en el Sistema</h4>
+                <h4 class="m-b-0 text-white">Mantenimiento Producto del Sistema</h4>
             </div>
             <div class="card-body">
                 <form class="form-horizontal" [formGroup]="productoForm" (submit)="guardarProducto()">
@@ -73,7 +73,7 @@
                                     <label>Categoria:</label>
                                     <select class="form-control custom-select" formControlName="categoria">
                                         <option></option>
-                                        <option value="">Seleccione una Categoria</option>
+                                        <option value="1">Seleccione una Categoria</option>
                                         <option *ngFor="let categoria of categorias"
                                         [value]="categoria._id">
                                         {{categoria.nombreCategoria}}
@@ -94,7 +94,9 @@
                             <i class="fa fa-floppy-o">
                             </i> Guardar</button>
                             <!-- <button type="submit" class="btn btn-danger m-r-10"> <i class="fa fa-ban"></i> Edit</button> -->
-                            <button routerLink="/dashboard/producto" class="btn btn-danger waves-effect waves-light m-r-10"><i class="fa fa-ban"></i> Cancelar</button>
+                            <button routerLink="/dashboard/producto" class="btn btn-danger waves-effect waves-light m-r-10">
+                                <i class="fa fa-ban">
+                                </i> Cancelar</button>
                         </div>
                         <!-- </div>
                                 </div>

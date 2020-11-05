@@ -40,7 +40,7 @@ export class RegistroProductoComponent implements OnInit {
       stockProducto: [, Validators.required],
       precioProducto: [, Validators.required],
       descripcionProducto: ['', ],
-      categoria: ['', Validators.required]
+      categoria: ['1', [Validators.required]]
     });
 
     this.cargarCategoria();

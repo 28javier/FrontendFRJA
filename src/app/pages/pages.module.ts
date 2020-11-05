@@ -21,6 +21,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ComponentsModule } from '../components/components.module';
 import { RegistroProductoComponent } from './producto/registro-producto/registro-producto.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { RegistroPacienteComponent } from './paciente/registro-paciente/registro-paciente.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PipesModule } from '../pipes/pipes.module';
     EspecialidadComponent,
     PerfilComponent,
     RegistroProductoComponent,
+    RegistroPacienteComponent,
   ],
   exports: [
     DashboardComponent,
@@ -48,7 +50,7 @@ import { PipesModule } from '../pipes/pipes.module';
     EspecialidadComponent,
     PerfilComponent,
     RegistroProductoComponent,
-    
+    RegistroPacienteComponent,
   ],
   imports: [
     CommonModule,
