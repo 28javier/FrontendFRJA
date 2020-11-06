@@ -5,7 +5,7 @@
                 <h4 class="m-b-0 text-white">Datos del Paciente</h4>
             </div>
             <div class="card-body">
-                <form action="#">
+                <form action="#" [formGroup]="pacienteForm" (submit)="guardarPaciente()">
                     <div class="form-body">
                         <h3 class="card-title">Información Personal</h3>
                         <hr>
@@ -13,7 +13,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Primer Nombre:</label>
-                                    <input type="text" id="primerNombre" class="form-control" placeholder="John doe">
+                                    <input type="text" id="primerNombre" class="form-control" placeholder="Ingrese el nombre" formControlName="nombreP">
                                     <!-- <small class="form-control-feedback"> This is inline help </small>  -->
                                 </div>
                             </div>
@@ -21,7 +21,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Segundo Nombre</label>
-                                    <input type="text" id="segundoNombre" class="form-control" placeholder="12n">
+                                    <input type="text" id="segundoNombre" class="form-control" placeholder="Ingrese el nombre" formControlName="nombreP2">
                                     <!-- <small class="form-control-feedback"> This field has error. </small>  -->
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Primer Apellido:</label>
-                                    <input type="text" id="primerApellido" class="form-control" placeholder="John doe">
+                                    <input type="text" id="primerApellido" class="form-control" placeholder="Ingrese el apellido" formControlName="apellidoP">
                                     <!-- <small class="form-control-feedback"> This is inline help </small> -->
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Segundo Apellido:</label>
-                                    <input type="text" id="segundoApellido" class="form-control" placeholder="12n">
+                                    <input type="text" id="segundoApellido" class="form-control" placeholder="Ingrese el apellido" formControlName="apellidoP2">
                                     <!-- <small class="form-control-feedback"> This field has error. </small>  -->
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Cedúla:</label>
-                                    <input type="number" id="cedula" class="form-control" placeholder="John doe">
+                                    <input type="number" id="cedula" class="form-control" placeholder="Ingrese el número de la cédula" formControlName="cedulaP">
                                     <!-- <small class="form-control-feedback"> This is inline help </small> -->
                                 </div>
                             </div>
@@ -58,11 +58,11 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Género:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                            <option value="Category 1">Category 1</option>
-                                            <option value="Category 2">Category 2</option>
-                                            <option value="Category 3">Category 5</option>
-                                            <option value="Category 4">Category 4</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="sexoP">
+                                            <option value="">- Seleccione un Género -</option>
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                            <option value="Otro">Otro</option>
                                     </select>
                                 </div>
                             </div>
@@ -73,20 +73,25 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Fecha de Nacimiento:</label>
-                                    <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                    <input type="date" class="form-control" formControlName="fechaNacimientoP">
                                 </div>
                             </div>
+
+
 
 
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Estado Civil:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                            <option value="Category 1">Category 1</option>
-                                            <option value="Category 2">Category 2</option>
-                                            <option value="Category 3">Category 5</option>
-                                            <option value="Category 4">Category 4</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="estadoCivilP">
+                                            <option value="">- Seleccione un Estado Civil -</option>
+                                            <option value="Soltero/a">Soltero/a</option>
+                                            <option value="Casado/a">Casado/a</option>
+                                            <option value="Viudo/a">Viudo/a</option>
+                                            <option value="Unión-Libre">Unión-Libre</option>
+                                            <option value="Separado/a">Separado/a</option>
+                                            <option value="Comprometido/a">Comprometido/a</option>
                                     </select>
                                 </div>
                             </div>
@@ -97,28 +102,41 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Tipo de Sangre:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                            <option value="Category 1">Category 1</option>
-                                            <option value="Category 2">Category 2</option>
-                                            <option value="Category 3">Category 5</option>
-                                            <option value="Category 4">Category 4</option>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="tipoDeSangreP">
+                                            <option value=""> - Seleccione un Tipo de Sangre - </option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
                                     </select>
                                 </div>
                             </div>
                             <!--/span-->
+                            <!--/span-->
+                            <!-- <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">N° Discapacidad:</label>
+                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="numeroDiscapcidadP">
+                                        <option value=""> - Seleccione un NUmero de Discapacidad - </option>
+                                        <option value="0">0</option>
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        
+                                </select>
+                                </div>
+                            </div> -->
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">N° Discapacidad:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                            <option value="Category 1">Category 1</option>
-                                            <option value="Category 2">Category 2</option>
-                                            <option value="Category 3">Category 5</option>
-                                            <option value="Category 4">Category 4</option>
-                                    </select>
+                                    <label class="control-label">Edad:</label>
+                                    <input type="number" id="edad" class="form-control" placeholder="Ingrese la edad" formControlName="edadP">
+                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
                                 </div>
                             </div>
-                            <!--/span-->
                         </div>
                         <!--/row-->
                         <h3 class="box-title m-t-20">Direcciones</h3>
@@ -127,14 +145,14 @@
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>Dirección N°1</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="direccionesP">
                                 </div>
                             </div>
 
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>Dirección N°2:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" formControlName="direccionesP1">
                                 </div>
                             </div>
                         </div>
@@ -143,15 +161,15 @@
                         <div class="row">
                             <div class="col-md-6 ">
                                 <div class="form-group">
-                                    <label>Números N°1:</label>
-                                    <input type="text" class="form-control">
+                                    <label>Número Celular N°1:</label>
+                                    <input type="text" class="form-control" formControlName="celularesP">
                                 </div>
                             </div>
 
                             <div class="col-md-6 ">
                                 <div class="form-group">
-                                    <label>Números N°2:</label>
-                                    <input type="text" class="form-control">
+                                    <label>Números Convencional N°2:</label>
+                                    <input type="text" class="form-control" formControlName="celularesP1">
                                 </div>
                             </div>
                         </div>
@@ -163,7 +181,7 @@
                         <i class="fa fa-floppy-o">
                         </i> Guardar</button>
                         <!-- <button type="submit" class="btn btn-danger m-r-10"> <i class="fa fa-ban"></i> Edit</button> -->
-                        <button class="btn btn-danger waves-effect waves-light m-r-10">
+                        <button routerLink="/dashboard/paciente" class="btn btn-danger waves-effect waves-light m-r-10">
                             <i class="fa fa-ban">
                             </i> Cancelar</button>
                     </div>

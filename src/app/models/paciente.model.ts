@@ -12,14 +12,14 @@ export class Paciente {
         public fechaNacimientoP?: Date,
         public estadoCivilP?: string,
         public tipoDeSangreP?: string,
-        public numeroDiscapcidadP?: string,
+        // public numeroDiscapcidadP?: string,
         public direccionesP?: string,
+        public direccionesP1?: string,
         public celularesP?: string,
+        public celularesP1?: string,
         public usuario?: Usuario,
         // tslint:disable-next-line: variable-name
         public _id?: string,
-
     ) {
-
     }
 }

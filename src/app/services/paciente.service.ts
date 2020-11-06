@@ -45,9 +45,9 @@ return this.http.get<CargarPacienteI>(url, this.headers);
 }
 
 
-cargarPacienteId(paciente: Paciente) {
+cargarPacienteId(id: string) {
 // localhost:3000/api/pacientes/5f7769b0d821f53668afdb65
-  const url = `${base_url}/pacientes/${paciente._id}`;
+  const url = `${base_url}/pacientes/${id}`;
   return this.http.get(url, this.headers)
   .pipe(
     map( (resp: {ok: boolean, paciente: Paciente}) => resp.paciente)
