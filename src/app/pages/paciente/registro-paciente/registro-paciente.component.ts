@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { PacienteService } from '../../../services/paciente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Paciente } from '../../../models/paciente.model';
+import { FechaI } from '../../../interfaces/fecha.interface';
+
 
 @Component({
   selector: 'app-registro-paciente',
@@ -16,6 +18,8 @@ export class RegistroPacienteComponent implements OnInit {
   public pacienteForm: FormGroup;
   public pacientes: Paciente[] = [];
   public pacienteSeleccionado: Paciente;
+  public fechaI: FechaI;
+  public formSubmitted = false;
 
   constructor(private fb: FormBuilder,
               private pacienteService: PacienteService,
@@ -29,20 +33,20 @@ export class RegistroPacienteComponent implements OnInit {
     });
 
     this.pacienteForm = this.fb.group({
-       nombreP:            [' ', [Validators.required]],
-       nombreP2:           [' ', [Validators.required]],
-       apellidoP:          [' ', [Validators.required]],
-       apellidoP2:         [' ', [Validators.required]],
-       cedulaP:            [' ' , [Validators.minLength(10)]],
-       sexoP:              [' ', ],
-       edadP:              [' ', ],
-       fechaNacimientoP:   [' ', ],
-       estadoCivilP:       [' ', ],
-       tipoDeSangreP:      [' ', ],
-       direccionesP:       [' ', ],
-       direccionesP1:      [' ', ],
-       celularesP:         [' ' , [Validators.minLength(10)]],
-       celularesP1:        [' ' , [Validators.minLength(10)]]
+       nombreP:['', [Validators.required]],
+       nombreP2:           ['', [Validators.required]],
+       apellidoP:          ['', [Validators.required]],
+       apellidoP2:         ['', [Validators.required]],
+       cedulaP:            ['' , [Validators.required, Validators.minLength(10)]],
+       sexoP:              ['', ],
+       edadP:              ['', ],
+       fechaNacimientoP:   ['', ],
+       estadoCivilP:       ['', ],
+       tipoDeSangreP:      ['', ],
+       direccionesP:       ['', ],
+       direccionesP1:      ['', ],
+       celularesP:         ['' , [Validators.minLength(10)]],
+       celularesP1:        ['' , [Validators.minLength(10)]]
     });
   }
 
@@ -60,9 +64,9 @@ export class RegistroPacienteComponent implements OnInit {
       const {nombreP, nombreP2, apellidoP, apellidoP2, cedulaP, sexoP, edadP,
       fechaNacimientoP, estadoCivilP, tipoDeSangreP,   direccionesP, direccionesP1,
       celularesP, celularesP1} = paciente;
-      console.log(nombreP, nombreP2, apellidoP, apellidoP2, cedulaP, sexoP, edadP,
-        fechaNacimientoP, estadoCivilP, tipoDeSangreP, direccionesP, direccionesP1,
-      celularesP, celularesP1);
+      // console.log(nombreP, nombreP2, apellidoP, apellidoP2, cedulaP, sexoP, edadP,
+      //   fechaNacimientoP, estadoCivilP, tipoDeSangreP, direccionesP, direccionesP1,
+      // celularesP, celularesP1);
       this.pacienteSeleccionado = paciente;
       this.pacienteForm.setValue({nombreP, nombreP2, apellidoP, apellidoP2, cedulaP, sexoP, edadP,
         fechaNacimientoP, estadoCivilP, tipoDeSangreP, direccionesP, direccionesP1,
@@ -80,13 +84,18 @@ export class RegistroPacienteComponent implements OnInit {
       }
       this.pacienteService.editarPaciente(data)
       .subscribe(resp => {
-        console.log(resp);
+        // console.log(resp);
         Swal.fire('Paciente Actualizado', `${nombreP2} ${apellidoP} ${apellidoP2} </br> actualizado Correctamente`, 'success');
         this.router.navigateByUrl(`/dashboard/paciente`);
       }, (err) => {
         Swal.fire('Error', err.error.message, 'error');
       });
     } else {
+      this.formSubmitted = true;
+      if (this.pacienteForm.invalid) {
+        return ;
+      //  si era valid ojo console.log('Formulario Posteado');
+    }
       this.pacienteService.crearPaciente(this.pacienteForm.value)
       .subscribe((resp: any) => {
         console.log(resp);
@@ -96,6 +105,14 @@ export class RegistroPacienteComponent implements OnInit {
         }, (err) => {
           Swal.fire('Error', err.error.message, 'error');
         });
+    }
+  }
+
+  campoNoValido(campo: string): boolean {
+    if (this.pacienteForm.get(campo).invalid && this.formSubmitted) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

@@ -12,17 +12,23 @@
                         <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Primer Nombre:</label>
-                                    <input type="text" id="primerNombre" class="form-control" placeholder="Ingrese el nombre" formControlName="nombreP">
-                                    <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                                    <label for="exampleInputuname">Primer Nombre:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-account"></i></div>
+                                        <input type="text" class="form-control form-control-danger" id="primerNombre" placeholder="Ingrese el primer nombre" formControlName="nombreP">
+                                    </div>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('nombreP')"> El primer nombre es obligatorio. </small>
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Segundo Nombre</label>
-                                    <input type="text" id="segundoNombre" class="form-control" placeholder="Ingrese el nombre" formControlName="nombreP2">
-                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                    <label class="control-label">Segundo Nombre:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-account"></i></div>
+                                        <input type="text" id="segundoNombre" class="form-control" placeholder="Ingrese el nombre" formControlName="nombreP2">
+                                    </div>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('nombreP2')"> El segundo nombre es obligatorio. </small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -31,16 +37,24 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Primer Apellido:</label>
-                                    <input type="text" id="primerApellido" class="form-control" placeholder="Ingrese el apellido" formControlName="apellidoP">
-                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-account"></i></div>
+                                        <input type="text" id="primerApellido" class="form-control" placeholder="Ingrese el apellido" formControlName="apellidoP">
+                                        <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                    </div>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('apellidoP')"> El primer apellido es obligatorio. </small>
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Segundo Apellido:</label>
-                                    <input type="text" id="segundoApellido" class="form-control" placeholder="Ingrese el apellido" formControlName="apellidoP2">
-                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-account"></i></div>
+                                        <input type="text" id="segundoApellido" class="form-control" placeholder="Ingrese el apellido" formControlName="apellidoP2">
+                                        <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                    </div>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('apellidoP')"> El segundo apellido es obligatorio. </small>
                                 </div>
                             </div>
                             <!--/span-->
@@ -50,20 +64,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Cedúla:</label>
-                                    <input type="number" id="cedula" class="form-control" placeholder="Ingrese el número de la cédula" formControlName="cedulaP">
-                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-currency-ngn"></i></div>
+                                        <input type="number" id="cedula" class="form-control" placeholder="Ingrese el número de la cédula" formControlName="cedulaP">
+                                        <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                    </div>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('cedulaP')"> El Número de Cédula es obligatorio. </small>
                                 </div>
                             </div>
                             <!--/span-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Género:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="sexoP">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-gender-male-female"></i></div>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="sexoP">
                                             <option value="">- Seleccione un Género -</option>
                                             <option value="Masculino">Masculino</option>
                                             <option value="Femenino">Femenino</option>
                                             <option value="Otro">Otro</option>
                                     </select>
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('sexoP')"> El Género es obligatorio. </small> -->
                                 </div>
                             </div>
                             <!--/span-->
@@ -73,7 +95,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Fecha de Nacimiento:</label>
-                                    <input type="date" class="form-control" formControlName="fechaNacimientoP">
+                                    <input [(ngModel)]="fechaI" type="date" class="form-control" formControlName="fechaNacimientoP"> {{fechaI | date: 'dd/MM/yyyy' }}
                                 </div>
                             </div>
 
@@ -84,7 +106,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Estado Civil:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="estadoCivilP">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-church"></i></div>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="estadoCivilP">
                                             <option value="">- Seleccione un Estado Civil -</option>
                                             <option value="Soltero/a">Soltero/a</option>
                                             <option value="Casado/a">Casado/a</option>
@@ -93,6 +117,8 @@
                                             <option value="Separado/a">Separado/a</option>
                                             <option value="Comprometido/a">Comprometido/a</option>
                                     </select>
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('sexoP')"> El Género es obligatorio. </small> -->
                                 </div>
                             </div>
                             <!--/span-->
@@ -102,7 +128,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Tipo de Sangre:</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="tipoDeSangreP">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-ambulance"></i></div>
+                                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1" formControlName="tipoDeSangreP">
                                             <option value=""> - Seleccione un Tipo de Sangre - </option>
                                             <option value="A+">A+</option>
                                             <option value="A-">A-</option>
@@ -113,6 +141,8 @@
                                             <option value="AB+">AB+</option>
                                             <option value="AB-">AB-</option>
                                     </select>
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('sexoP')"> El Género es obligatorio. </small> -->
                                 </div>
                             </div>
                             <!--/span-->
@@ -133,8 +163,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Edad:</label>
-                                    <input type="number" id="edad" class="form-control" placeholder="Ingrese la edad" formControlName="edadP">
-                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-av-timer"></i></div>
+                                        <input type="number" id="edad" class="form-control" placeholder="Ingrese la edad" formControlName="edadP">
+                                        <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('sexoP')"> El Género es obligatorio. </small> -->
                                 </div>
                             </div>
                         </div>
@@ -145,14 +179,22 @@
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>Dirección N°1</label>
-                                    <input type="text" class="form-control" formControlName="direccionesP">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-home-variant"></i></div>
+                                        <input type="text" class="form-control" placeholder="Ingrese una Dirección" formControlName="direccionesP">
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('cedulaP')"> El Número de Cédula es obligatorio. </small> -->
                                 </div>
                             </div>
 
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>Dirección N°2:</label>
-                                    <input type="text" class="form-control" formControlName="direccionesP1">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-home-variant"></i></div>
+                                        <input type="text" class="form-control" placeholder="Ingrese una Dirección" formControlName="direccionesP1">
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('cedulaP')"> El Número de Cédula es obligatorio. </small> -->
                                 </div>
                             </div>
                         </div>
@@ -162,14 +204,22 @@
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>Número Celular N°1:</label>
-                                    <input type="text" class="form-control" formControlName="celularesP">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-whatsapp"></i></div>
+                                        <input type="text" class="form-control" placeholder="Ingrese un Número" formControlName="celularesP">
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('cedulaP')"> El Número de Cédula es obligatorio. </small> -->
                                 </div>
                             </div>
 
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label>Números Convencional N°2:</label>
-                                    <input type="text" class="form-control" formControlName="celularesP1">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="mdi mdi-phone-in-talk"></i></div>
+                                        <input type="text" class="form-control" placeholder="Ingrese un Número" formControlName="celularesP1">
+                                    </div>
+                                    <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('cedulaP')"> El Número de Cédula es obligatorio. </small> -->
                                 </div>
                             </div>
                         </div>

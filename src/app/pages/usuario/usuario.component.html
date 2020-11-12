@@ -81,8 +81,12 @@
                                 <td>
                                     <span class="label label-success">{{usuario.especialidad.name}}</span></td>
                                 <td class="text-nowrap w100 text-center">
+                                    <!-- fa fa-address-book-o -->
                                     <a class="cursor" data-toggle="tooltip" data-original-title="Editar Usuario" [routerLink]="['/dashboard/registro-Usuario', usuario._id]">
                                         <i class="fa fa-pencil-square text-inverse m-r-10"></i>
+                                    </a>
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Datos Generales Usuario" [routerLink]="['/dashboard/Usuario-datoGenerales', usuario._id]">
+                                        <i class="fa fa-address-book-o text-info m-r-10"></i>
                                     </a>
                                     <a data-toggle="tooltip" class="cursor" data-original-title="Eliminar Usuario" (click)="eliminarUsuario(usuario)">
                                         <i class="fa fa-window-close text-danger"></i>
