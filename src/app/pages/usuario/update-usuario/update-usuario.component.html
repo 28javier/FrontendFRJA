@@ -5,7 +5,7 @@
                 <h4 class="m-b-0 text-white">Registro de un nuevo usuario al Sistema</h4>
             </div>
             <div class="card-body">
-                <form action="#" class="form-horizontal" autocomplete="off" [formGroup]="registroForms" (ngSubmit)="crearUsuario()">
+                <form action="#" class="form-horizontal" autocomplete="off" [formGroup]="registroForms" (ngSubmit)="updateUsuario()">
                     <div class="form-body">
                         <h3 class="box-title">Información del Personal</h3>
                         <hr class="m-t-0 m-b-10">
@@ -116,28 +116,6 @@
                         </div>
                         <!-- fin email -->
                         <!-- inicio password -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="pwd1">Clave:</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-lock"></i></div>
-                                        <input type="password" class="form-control" id="pwd1" placeholder="Ingrese la clave" formControlName="password">
-                                    </div>
-                                    <small class="form-control-feedback text-danger" *ngIf="contrasenasNoValidas()"> Las contraseñas deben ser iguales. </small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="pwd2">Confirmar Clave:</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-lock"></i></div>
-                                        <input type="password" class="form-control" id="pwd2" placeholder="Repita la clave" formControlName="password2">
-                                    </div>
-                                    <small class="form-control-feedback text-danger" *ngIf="contrasenasNoValidas()"> Las contraseñas deben ser iguales. </small>
-                                </div>
-                            </div>
-                        </div>
 
                         <h3 class="box-title m-t-20">Datos Generales</h3>
                         <hr>

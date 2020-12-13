@@ -8,6 +8,52 @@
                 <form class="form p-t-20" [formGroup]="perfilForms" (submit)="actualizarPerfil()">
 
                     <div class="form-group">
+                        <label for="exampleInputuname">Primer Nombre:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control form-control-danger" id="exampleInputuname" placeholder="Ingrese el primer nombre" formControlName="nombre1">
+                        </div>
+                        <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('nombre1')"> El primer nombre es obligatorio. </small> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Segundo Nombre:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese el segundo nombre" formControlName="nombre2">
+                        </div>
+                        <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('nombre2')"> El segundo nombre es obligatorio. </small> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Primer Apellido:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese el primer apellido" formControlName="apellido1">
+                        </div>
+                        <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('apellido1')"> El primer apellido es obligatorio. </small> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Segundo Apellido:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" class="form-control" id="exampleInputuname" placeholder="Ingrese el segundo apellido" formControlName="apellido2">
+                        </div>
+                        <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('apellido2')"> El segundo apellido es obligatorio. </small> -->
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Cedúla:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="mdi mdi-currency-ngn"></i></div>
+                            <input type="number" id="cedula" class="form-control" placeholder="Ingrese el número de la cédula" formControlName="cedula">
+                            <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                        </div>
+                        <!-- <small class="form-control-feedback text-danger" *ngIf="campoNoValido('cedula')"> El Número de Cédula es obligatorio. </small> -->
+                    </div>
+
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Dirección de Correo</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-email"></i></div>

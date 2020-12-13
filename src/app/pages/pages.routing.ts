@@ -16,6 +16,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { RegistroProductoComponent } from './producto/registro-producto/registro-producto.component';
 import { RegistroPacienteComponent } from './paciente/registro-paciente/registro-paciente.component';
 import { DatosGeneralesComponent } from './usuario/datos-generales/datos-generales.component';
+import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     children: [
      {path: '', component: DashboardComponent, data: {titulo: 'Dasboard'}},
      {path: 'usuario', component: UsuarioComponent, data: {titulo: 'Mantenimiento Usuarios'}},
-     {path: 'registro-Usuario/:id', component: RegistroUsuarioComponent, data: {titulo: 'Mantenimiento Usuarios'}},
+     {path: 'usuarios', component: RegistroUsuarioComponent, data: {titulo: 'Mantenimiento Usuarios Registrar'}},
+     {path: 'update-Usuario/:id', component: UpdateUsuarioComponent, data: {titulo: 'Mantenimiento Usuarios Modificar'}},
      {path: 'Usuario-datoGenerales/:id', component: DatosGeneralesComponent, data: {titulo: 'Mantenimiento Usuarios'}},
 
      {path: 'paciente', component: PacienteComponent, data: {titulo: 'Mantenimiento Pacientes'}},

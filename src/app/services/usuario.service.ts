@@ -53,8 +53,12 @@ export class UsuarioService {
      }).pipe(
        map((resp: any) => {
         //  console.log(resp);
-         const {nombre1, nombre2, apellido1, apellido2, email, role, especialidad, _id, img =''} = resp.usuario;
-         this.usuario = new Usuario(nombre1, nombre2, apellido1, apellido2, email, '', role, especialidad, _id, img);
+         const {nombre1, nombre2, apellido1, apellido2, email, cedula,
+          sexo, fechaNacimiento, estadoCivil, tipoDeSangre, direccion1,
+          direccion2, celular1, celular2, role, especialidad, _id, img = ''} = resp.usuario;
+         this.usuario = new Usuario(nombre1, nombre2, apellido1, apellido2, email, cedula,
+          sexo, fechaNacimiento, estadoCivil, tipoDeSangre, direccion1,
+          direccion2, celular1, celular2, '', role, especialidad, _id, img);
         //  this.usuario.imprimirUsuario();
          localStorage.setItem('token', resp.token);
          return true;
@@ -86,14 +90,39 @@ export class UsuarioService {
   );
  }
 
- actualizarPerfil(data: {email: string, password: string, role: string}) {
+ actualizarPerfil(data: {email: string, password: string, role: string,
+                          nombre1: string, nombre2: string, apellido1: string,
+                        apellido2: string, cedula: number
+                      }) {
 
   data = {
     ...data,
-    role: this.usuario.role
+    role: this.usuario.role,
   };
   return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers);
  }
+
+//  actualizarPerfil2(data: {email: string, password: string, role: string,
+//                     nombre1: string, nombre2: string, apellido1: string,
+//                     apellido2: string, especialidad: string, cedula: number,
+//                     direccion1: string, direccion2: string, celular1: string,
+//                     celular2: string, fechaDeNacimiento: string, estadoCivil: string,
+//                     tipoDeSangre: string, sexo: string
+//                   }) {
+//       data = {
+//           ...data,
+//         password: this.usuario.password,
+//         email: this.usuario.email
+// };
+//       return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers);
+// }
+actualizarPerfil2( data: Usuario ) {
+  // localhost:3000/api/productos/5f7c8c949af3e139a4669825
+  const data1 = {...data,
+  password: this.usuario.password}
+  const url = `${base_url}/usuarios/${data._id}`;
+  return this.http.put(url, data1, this.headers);
+}
 
  cargarUsuarios(desde: number = 0) {
   // localhost:3000/api/usuarios?desde=0
@@ -102,14 +131,20 @@ export class UsuarioService {
           .pipe(
             map( resp => {
                 const usuarios = resp.usuarios.map(
-                  user => new Usuario(user.nombre1, user.nombre2, user.apellido1,
-                    user.apellido2, user.email, '', user.role, user.especialidad,
-                    user._id, user.img));
+                  user => new Usuario(user.nombre1, user.nombre2, user.apellido1, user.apellido2,
+                     user.email, user.cedula, user.sexo, user.fechaNacimiento, user.estadoCivil,
+                     user.tipoDeSangre, user.direccion1, user.direccion2, user.celular1,
+                     user.celular2, '', user.role, user.especialidad, user._id, user.img)
+                     );
                 return {totalUsuario: resp.totalUsuario,
                 usuarios};
             })
           );
  }
+//  user.nombre1, user.nombre2, user.apellido1, user.apellido2,
+//                      user.email, user.cedula, user.sexo, user.fechaNacimiento, user.estadoCivil,
+//                      user.tipoDeSangre, user.direccion1, user.direccion2, user.celular1, user.celular2,
+//                      '', user.role, user.especialidad, user.img, user._id
 
  obtenerUsuarioID(id: string){
   // localhost:3000/api/usuarios/5f96ffca65784e2c48b1ac53

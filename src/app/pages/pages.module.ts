@@ -23,6 +23,7 @@ import { RegistroProductoComponent } from './producto/registro-producto/registro
 import { PipesModule } from '../pipes/pipes.module';
 import { RegistroPacienteComponent } from './paciente/registro-paciente/registro-paciente.component';
 import { DatosGeneralesComponent } from './usuario/datos-generales/datos-generales.component';
+import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DatosGeneralesComponent } from './usuario/datos-generales/datos-general
     RegistroProductoComponent,
     RegistroPacienteComponent,
     DatosGeneralesComponent,
+    UpdateUsuarioComponent,
   ],
   exports: [
     DashboardComponent,
@@ -54,6 +56,7 @@ import { DatosGeneralesComponent } from './usuario/datos-generales/datos-general
     RegistroProductoComponent,
     RegistroPacienteComponent,
     DatosGeneralesComponent,
+    UpdateUsuarioComponent,
   ],
   imports: [
     CommonModule,

@@ -8,6 +8,7 @@ import { EspecialidadService } from '../../../services/especialidad.service';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario.model';
+import { FechaI } from '../../../interfaces/fecha.interface';
 
 @Component({
   selector: 'app-registro-usuario',
@@ -22,6 +23,8 @@ export class RegistroUsuarioComponent implements OnInit{
   public formSubmitted = false;
   public registroForms: FormGroup;
   public usuarioSelecionado: Usuario;
+  public fechaI: FechaI;
+
 
 
   constructor( private fb: FormBuilder, public usuarioServices: UsuarioService,
@@ -41,11 +44,20 @@ export class RegistroUsuarioComponent implements OnInit{
       nombre2: ['', [Validators.required, Validators.minLength(3)]],
       apellido1: ['', [Validators.required, Validators.minLength(3)]],
       apellido2: ['', [Validators.required, Validators.minLength(3)]],
-      role: ['1', [Validators.required]],
+      role: ['', [Validators.required]],
       especialidad: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: ['', [Validators.required]],
-      password2: ['', [Validators.required]]
+      password2: ['', [Validators.required]],
+      cedula: ['', [Validators.required]],
+      direccion1: [''],
+      direccion2: [''],
+      celular1: [''],
+      celular2: [''],
+      fechaNacimiento: [''],
+      estadoCivil: ['', [Validators.required]],
+      tipoDeSangre: ['', [Validators.required]],
+      sexo: ['', [Validators.required]]
     }, {
       validators: this.passwordIguales('password', 'password2')
     });

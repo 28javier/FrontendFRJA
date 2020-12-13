@@ -27,7 +27,12 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfilForms = this.fb.group({
-      email: [this.usuario.email, [Validators.required, Validators.email]]
+      nombre1: [this.usuario.nombre1, [Validators.required]],
+      nombre2: [this.usuario.nombre2, [Validators.required]],
+      apellido1: [this.usuario.apellido1, [Validators.required]],
+      apellido2: [this.usuario.apellido2, [Validators.required]],
+      email: [this.usuario.email, [Validators.required, Validators.email]],
+      cedula: [this.usuario.cedula, [Validators.required]]
     });
   }
 
@@ -35,8 +40,14 @@ export class PerfilComponent implements OnInit {
     // console.log(this.perfilForms.value);
     this.usuarioService.actualizarPerfil(this.perfilForms.value)
       .subscribe((resp) => {
-        const {email} = this.perfilForms.value;
+        const {email, nombre1, nombre2, apellido1, apellido2, cedula} = this.perfilForms.value;
         this.usuario.email = email;
+        this.usuario.nombre1 = nombre1;
+        this.usuario.nombre2 = nombre2;
+        this.usuario.apellido1 = apellido1;
+        this.usuario.apellido2 = apellido2;
+        this.usuario.cedula = cedula;
+
         // console.log(resp);
         Swal.fire('Guardado', 'Guardado correctamente', 'success');
       },(err) => {

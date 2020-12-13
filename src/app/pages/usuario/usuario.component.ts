@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { ModalImagenService } from '../../services/modal-imagen.service';
 import { delay } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { Especialidad } from '../../models/especialidad.model';
+import { EspecialidadService } from '../../services/especialidad.service';
 
 @Component({
   selector: 'app-usuario',
@@ -17,6 +19,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
   public totalUsuario: number = 0;
   public usuarios: Usuario[] = [];
+  public especialidades: Especialidad[] = [];
   public usuariosTemp: Usuario[] = [];
   public imgSusb: Subscription;
   public desde: number = 0;
@@ -25,7 +28,8 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
   constructor( private usuarioServices: UsuarioService,
                private busquedaService: BusquedasService,
-               public modalImagenService: ModalImagenService) { }
+               public modalImagenService: ModalImagenService,
+               public especialidadService: EspecialidadService) { }
 
 
   ngOnDestroy(): void {
@@ -34,6 +38,7 @@ export class UsuarioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   this.cargarUsuarios();
+  this.cargarEspecialidades();
   this.imgSusb = this.modalImagenService.nuevaImagen
   .pipe(
     delay(100)
@@ -54,6 +59,18 @@ export class UsuarioComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  cargarEspecialidades() {
+    this.cargando = true;
+    this.especialidadService.cargarEspecialidades().subscribe(
+      especialidad => {
+        // console.log(especialidad);
+        this.cargando = false;
+        this.especialidades = especialidad;
+      },
+      erro => {console.log(erro); }
+    );
+   }
 
   cambiarPagina(valor: number) {
     this.desde += valor;
@@ -112,6 +129,8 @@ export class UsuarioComponent implements OnInit, OnDestroy {
           Swal.fire('Error', err.error.message, 'error');
         });
   }
+
+
 
 
   abrirModalImagen(usuario: Usuario){

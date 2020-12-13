@@ -33,7 +33,7 @@ export class RegistroPacienteComponent implements OnInit {
     });
 
     this.pacienteForm = this.fb.group({
-       nombreP:['', [Validators.required]],
+       nombreP: ['', [Validators.required]],
        nombreP2:           ['', [Validators.required]],
        apellidoP:          ['', [Validators.required]],
        apellidoP2:         ['', [Validators.required]],
@@ -46,7 +46,8 @@ export class RegistroPacienteComponent implements OnInit {
        direccionesP:       ['', ],
        direccionesP1:      ['', ],
        celularesP:         ['' , [Validators.minLength(10)]],
-       celularesP1:        ['' , [Validators.minLength(10)]]
+       celularesP1:        ['' , [Validators.minLength(10)]],
+      
     });
   }
 
