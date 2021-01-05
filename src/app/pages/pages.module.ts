@@ -24,6 +24,9 @@ import { PipesModule } from '../pipes/pipes.module';
 import { RegistroPacienteComponent } from './paciente/registro-paciente/registro-paciente.component';
 import { DatosGeneralesComponent } from './usuario/datos-generales/datos-generales.component';
 import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.component';
+import { VentasComponent } from './ventas/ventas.component';
+import { VentasCreateComponent } from './ventas/ventas-create/ventas-create.component';
+import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.
     RegistroPacienteComponent,
     DatosGeneralesComponent,
     UpdateUsuarioComponent,
+    VentasComponent,
+    VentasCreateComponent,
+    VentasDetalleComponent,
   ],
   exports: [
     DashboardComponent,
@@ -57,6 +63,8 @@ import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.
     RegistroPacienteComponent,
     DatosGeneralesComponent,
     UpdateUsuarioComponent,
+    VentasComponent,
+    VentasCreateComponent,
   ],
   imports: [
     CommonModule,

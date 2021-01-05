@@ -21,6 +21,7 @@ const base_url = environment.base_url;
 export class UsuarioService {
 
   public usuario: Usuario;
+  public identity;
 
   constructor( private http: HttpClient,
                private router: Router) {
@@ -41,6 +42,18 @@ export class UsuarioService {
         'x-token': this.token
       }
      };
+   }
+
+   getIdentity(): Observable<any> {
+     let identity = localStorage.getItem('email');
+     if (identity) {
+      this.identity = identity;
+      // console.log(identity);
+      
+    }else{
+      this.identity = null;
+    }
+    return this.identity;
    }
 
    // funcion para no poder ingresar en las demas pantallas si no esta logueado

@@ -17,6 +17,9 @@ import { RegistroProductoComponent } from './producto/registro-producto/registro
 import { RegistroPacienteComponent } from './paciente/registro-paciente/registro-paciente.component';
 import { DatosGeneralesComponent } from './usuario/datos-generales/datos-generales.component';
 import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.component';
+import { VentasComponent } from './ventas/ventas.component';
+import { VentasCreateComponent } from './ventas/ventas-create/ventas-create.component';
+import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.component';
 
 
 const routes: Routes = [
@@ -40,6 +43,11 @@ const routes: Routes = [
      {path: 'account-settings', component: AccountSetingsComponent, data: {titulo: 'Ajustes de Cuenta'}},
      {path: 'especialidad', component: EspecialidadComponent, data: {titulo: 'Especialidad'}},
      {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de Usuario'}},
+     {path: 'venta', component: VentasComponent, data: {titulo: 'Mantenimiento de Ventas'}},
+     {path: 'ventas', component: VentasCreateComponent, data: {titulo: 'Ventas de Productos'}},
+     {path: 'venta/:id', component: VentasDetalleComponent, data: {titulo: 'Detalle de la Venta'}}
+
+
     ]
    },
 ];

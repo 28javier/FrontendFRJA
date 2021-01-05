@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 // componentes
 import { AppComponent } from './app.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -30,7 +31,8 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     AppRoutingModule,
     PagesModule,
     AuthModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -45,6 +45,14 @@ export class SidebarService {
         { titulo: 'Producto', url: 'producto'},
         // { titulo: 'Dashboard', url: '/'}
     ]
+    },
+    {
+      titulo: 'Ventas',
+      icono: 'mdi mdi-cash-multiple',
+      submenu: [
+        { titulo: 'Venta', url: 'venta'},
+        // { titulo: 'Dashboard', url: '/'}
+    ]
     }
   ];
 

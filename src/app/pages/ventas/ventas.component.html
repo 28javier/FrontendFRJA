@@ -1,0 +1,94 @@
+<div class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar Usuario..." #txtTermino (keyup)="buscar(txtTermino.value)">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="text-right animate fadeIn fast">
+    <button type="button" routerLink="/dashboard/registro-Usuario" class="btn btn-info align-content-end">
+        <i class="fa fa-plus"></i> 
+          Agregar nuevo Usuario
+    </button>
+</div> -->
+
+<div class="row mt-2 animate fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando...</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row animate fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Ventas</h4>
+                        <h6 class="card-subtitle">Ventas Realizadas</h6>
+                    </div>
+                    <div class="col">
+                        <div class="text-right animate fadeIn fast">
+                            <button type="button" routerLink="/dashboard/ventas" class="btn btn-info align-content-end">
+                            <i class="fa fa-plus"></i> 
+                            Registrar Venta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Datos del Paciente</th>
+                                <th>Fecha</th>
+                                <th>Datos del Usuario</th>
+                                <th class="text-nowrap">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let venta of ventas">
+                                <td>
+                                    <span class="label label-info">
+                                    {{venta.paciente.nombreP}} {{venta.paciente.nombreP2}} {{venta.paciente.apellidoP}} {{venta.paciente.apellidoP2}}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="label label-success">
+                                    {{venta.fecha | date: 'MMM d, y, h:mm:ss a'}}
+                                </span>
+                                </td>
+                                <td>
+                                    <span class="label label-info">
+                                    {{venta.usuario.email}}
+                                        </span>
+                                </td>
+                                <td class="text-nowrap w100 text-center">
+
+                                    <a class="cursor" [routerLink]="['/dashboard/venta', venta._id]" data-toggle="tooltip" data-original-title="Detalles de la Venta">
+                                        <i class="fa fa-address-book-o text-info m-r-10"></i>
+                                    </a>
+                                    <!-- <a class="cursor" href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
+                                    <a class="cursor" (click)="borrarVenta(venta)" data-toggle="tooltip" data-original-title="Eliminar"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="txtTermino.value.length === 0">
+
+                    <button (click)="cambiarPagina(-15)" class="btn btn-secondary">Anterior</button> &nbsp;
+                    <button (click)="cambiarPagina(15)" class="btn btn-secondary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
