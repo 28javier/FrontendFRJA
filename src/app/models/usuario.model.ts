@@ -27,7 +27,7 @@ export class Usuario {
         public celular1?: string,
         public celular2?: string,
         public password?: string,
-        public role?: string,
+        public role?: 'Admin_Role' | 'Secrt_Role' | 'Medic_Role',
         public especialidad?: _EspecialidadU,
         // tslint:disable-next-line: variable-name
         public _id?: string,

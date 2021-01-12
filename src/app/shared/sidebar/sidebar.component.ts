@@ -11,12 +11,12 @@ import { Usuario } from '../../models/usuario.model';
 })
 export class SidebarComponent implements OnInit {
 
-  public menuItems: any[];
+  // public menuItems: any[];
   public usuario: Usuario;
 
-  constructor( private sidebarService: SidebarService,
+  constructor( public sidebarService: SidebarService,
                private usuarioServices: UsuarioService) {
-    this.menuItems = sidebarService.menu;
+    // this.menuItems = sidebarService.menu;
     this.usuario = usuarioServices.usuario;
     // console.log(this.menuItems);
   }

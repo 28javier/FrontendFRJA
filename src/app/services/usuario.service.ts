@@ -36,12 +36,22 @@ export class UsuarioService {
      return this.usuario._id || '';
    }
 
+   get role(): 'Admin_Role' | 'Secrt_Role' | 'Medic_Role'{
+      return this.usuario.role
+   }
+
    get headers() {
      return {
       headers: {
         'x-token': this.token
       }
      };
+   }
+
+   guardarLocalStorage(token: string, menu: any){
+      
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu));
    }
 
    getIdentity(): Observable<any> {
@@ -73,7 +83,7 @@ export class UsuarioService {
           sexo, fechaNacimiento, estadoCivil, tipoDeSangre, direccion1,
           direccion2, celular1, celular2, '', role, especialidad, _id, img);
         //  this.usuario.imprimirUsuario();
-         localStorage.setItem('token', resp.token);
+         this.guardarLocalStorage(resp.token, resp.menu);
          return true;
        }),
        catchError(error => of(false))
@@ -82,13 +92,15 @@ export class UsuarioService {
 
    logout() {
       localStorage.removeItem('token');
+      localStorage.removeItem('menu');
       this.router.navigateByUrl('/login');
    }
    login( formDataLogin: LoginForm) {
     return this.http.post(`${base_url}/login`, formDataLogin)
       .pipe(
         tap( (resp: any) => {
-          localStorage.setItem('token', resp.token);
+          this.guardarLocalStorage(resp.token, resp.menu);
+
       })
     );
    }
@@ -98,7 +110,7 @@ export class UsuarioService {
     return this.http.post(`${base_url}/usuarios`, formData)
     .pipe(
       tap( (resp: any) => {
-        localStorage.setItem('token', resp.token);
+        this.guardarLocalStorage(resp.token, resp.menu);
     })
   );
  }

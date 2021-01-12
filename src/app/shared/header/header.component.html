@@ -66,17 +66,17 @@
                                     <div class="u-img"><img [src]="usuario.imagenUrl" alt="user"></div>
                                     <div class="u-text">
                                         <h4>{{usuario.nombre1}} {{usuario.apellido1}}</h4>
-                                        <p class="text-muted">{{usuario.email}}</p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        <p class="text-muted">{{usuario.email}}</p><a routerLink="/dashboard/perfil" class="btn btn-rounded btn-danger btn-sm">Ver Mi perfil</a></div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li><a routerLink="/dashboard/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                            <!-- <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li> -->
                             <li role="separator" class="divider"></li>
-                            <li><a routerLink="/dashboard/account-settings"><i class="ti-settings"></i> Account Setting</a></li>
+                            <li><a routerLink="/dashboard/account-settings"><i class="ti-settings"></i> Ajuste de la Cuenta</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a (click)="logout()" class="cursor"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a (click)="logout()" class="cursor"><i class="fa fa-power-off"></i> Salir</a></li>
                         </ul>
                     </div>
                 </li>
