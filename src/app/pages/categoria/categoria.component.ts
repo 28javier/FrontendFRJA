@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Categoria } from 'src/app/models/categoria.model';
 import { CategoriaService } from '../../services/categoria.service';
 import Swal from 'sweetalert2';
+import { BusquedasService } from '../../services/busquedas.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class CategoriaComponent implements OnInit {
   public desde: number = 0;
   public cargando: boolean = true;
 
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(private categoriaService: CategoriaService,
+    private busquedaService: BusquedasService) { }
 
   ngOnInit(): void {
     this.cargaCategoriaPa();
@@ -99,6 +101,18 @@ export class CategoriaComponent implements OnInit {
     });
     }
     });
+  }
+
+
+  buscar(termino: string) {
+    // console.log(termino);
+    if (termino.length === 0) {
+      return this.cargaCategoriaPa();
+    }
+    this.busquedaService.buscar('categorias', termino)
+      .subscribe( resp => {
+        this.categorias = resp;
+      });
   }
 
 }

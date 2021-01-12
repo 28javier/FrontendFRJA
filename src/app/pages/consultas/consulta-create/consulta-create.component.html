@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">Consulta Médica</h4>
+            </div>
+            <div class="card-body">
+                <form action="#" [formGroup]="consultaForms" class="form-horizontal" autocomplete="off" (ngSubmit)="crearConsulta()">
+                    <div class="form-body">
+                        <h3 class="card-title">Información Médico / Paciente</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><b>Médico:</b></label>
+                                    <input type="text" id="idUsuario" class="form-control" readonly value="{{usuario.email}}">
+                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"><b>Paciente:</b></label>
+                                    <select class="form-control custom-select" formControlName="paciente">
+                                    <option value="">SELECCIONAR PACIENTE</option>
+                                    <option  value="{{paciente._id}}" *ngFor="let paciente of pacientes">
+                                        {{paciente.apellidoP}} {{paciente.apellidoP2}} {{paciente.nombreP}} {{paciente.nombreP2}}
+                                    </option>
+                                </select>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('paciente')"> Seleccionar un paciente. </small>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <h3 class="box-title m-t-40">Datos de la Consulta</h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label for="comment"><b>Motivo de la Consulta:</b></label>
+                                    <textarea class="form-control" rows="5" id="comment" formControlName="motivoConsulta"></textarea>
+                                    <small class="form-control-feedback text-danger" *ngIf="campoNoValido('motivoConsulta')"> Ingrese un motivo de la consulta. </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label for="comment"><b>Tratamiento:</b></label>
+                                    <textarea class="form-control" rows="5" id="comment" formControlName="tratamiento"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label for="comment"><b>Evolución:</b></label>
+                                    <textarea class="form-control" rows="5" id="comment" formControlName="evolucion"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-3 col-md-12 text-right">
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"><i class="fa fa-floppy-o"></i> Guardar</button>
+                        <button routerLink="/dashboard/consultas" class="btn btn-danger waves-effect waves-light m-r-10"><i class="fa fa-ban"></i> Cancelar</button>
+                        <!-- <button type="submit" class="btn btn-danger m-r-10"> <i class="fa fa-ban"></i> Edit</button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

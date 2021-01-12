@@ -26,10 +26,22 @@ export class SidebarService {
       titulo: 'Pacientes',
       icono: 'mdi mdi-wheelchair-accessibility',
       submenu: [
-        { titulo: 'Paciente', url: 'paciente'},
+        { titulo: 'Pacientes', url: 'paciente'},
+        // { titulo: 'Consultas', url: 'paciente'},
         // { titulo: 'Dashboard', url: '/'}
     ]
     },
+
+    {
+      titulo: 'Consultas',
+      icono: 'mdi mdi-book-open-page-variant',
+      submenu: [
+        { titulo: 'Consultas Médicas', url: 'consultas'},
+        // { titulo: 'Consultas', url: 'paciente'},
+        // { titulo: 'Dashboard', url: '/'}
+    ]
+    },
+
     {
       titulo: 'Categorias',
       icono: 'mdi mdi-folder',

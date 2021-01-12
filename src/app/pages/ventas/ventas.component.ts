@@ -16,6 +16,8 @@ export class VentasComponent implements OnInit {
   public ventas: VentaM[] = [];
   public desde: number = 0;
   public totalVenta: number = 0;
+  public filterVentas = '';
+
 
   constructor(private ventaService: VentasService,
               private busquedaService: BusquedasService) { }

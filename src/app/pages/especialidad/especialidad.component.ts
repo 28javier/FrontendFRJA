@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EspecialidadService } from '../../services/especialidad.service';
 import { Especialidad } from '../../models/especialidad.model';
 import Swal from 'sweetalert2';
+import { BusquedasService } from '../../services/busquedas.service';
 
 @Component({
   selector: 'app-especialidad',
@@ -16,7 +17,8 @@ export class EspecialidadComponent implements OnInit {
   public desde: number = 0;
   public cargando: boolean = true;
 
-  constructor( public especialidadService: EspecialidadService) { }
+  constructor( public especialidadService: EspecialidadService,
+              public busquedaService: BusquedasService) { }
 
   ngOnInit(): void {
      this.cargarEspecialidades();
@@ -104,6 +106,17 @@ async abriSwictAlert(){
         Swal.fire('Error', err.error.message, 'error');
       });
   }
+}
+
+buscar(termino: string) {
+  // console.log(termino);
+  if (termino.length === 0) {
+    return this.cargarEspecialidadPa();
+  }
+  this.busquedaService.buscar('especialidades', termino)
+    .subscribe( resp => {
+      this.especialidades = resp;
+    });
 }
 
 }

@@ -20,6 +20,9 @@ import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.
 import { VentasComponent } from './ventas/ventas.component';
 import { VentasCreateComponent } from './ventas/ventas-create/ventas-create.component';
 import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.component';
+import { ConsultasComponent } from './consultas/consultas.component';
+import { ConsultaCreateComponent } from './consultas/consulta-create/consulta-create.component';
+import { ConsultaDetalleComponent } from './consultas/consulta-detalle/consulta-detalle.component';
 
 
 const routes: Routes = [
@@ -45,7 +48,14 @@ const routes: Routes = [
      {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil de Usuario'}},
      {path: 'venta', component: VentasComponent, data: {titulo: 'Mantenimiento de Ventas'}},
      {path: 'ventas', component: VentasCreateComponent, data: {titulo: 'Ventas de Productos'}},
-     {path: 'venta/:id', component: VentasDetalleComponent, data: {titulo: 'Detalle de la Venta'}}
+     {path: 'venta/:id', component: VentasDetalleComponent, data: {titulo: 'Detalle de la Venta'}},
+
+     {path: 'consultas', component: ConsultasComponent, data: {titulo: 'Mantenimiento de Consultas'}},
+     {path: 'consultaRegistro', component: ConsultaCreateComponent, data: {titulo: 'Registro de la Consulta'}},
+     {path: 'consultaDetalle/:id', component: ConsultaDetalleComponent, data: {titulo: 'Detalle de la Consulta'}},
+
+
+
 
 
     ]

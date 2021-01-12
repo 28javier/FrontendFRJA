@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <input type="text" class="form-control" placeholder="Buscar venta por el apellido del Paciente..." [(ngModel)]="filterVentas" name="filterVentas">
+                <input type="text" class="form-control" name="filterConsulta" placeholder="Buscar Consulta por el apellido del Paciente..." [(ngModel)]="filterConsulta">
 
             </div>
         </div>
@@ -26,68 +26,61 @@
     </div>
 </div>
 
-<div class="row animate fadeIn fast">
+<div class="row animate fadeIn fast" *ngIf="!cargando">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Ventas</h4>
-                        <h6 class="card-subtitle">Ventas Realizadas ({{ventas.length}})</h6>
+                        <h4 class="card-title">Consultas ({{totalConsultas}})</h4>
+                        <h6 class="card-subtitle">Consultas registradas en la Aplicación</h6>
                     </div>
                     <div class="col">
                         <div class="text-right animate fadeIn fast">
-                            <button type="button" routerLink="/dashboard/ventas" class="btn btn-info align-content-end">
+                            <button type="button" routerLink="/dashboard/consultaRegistro" class="btn btn-info align-content-end">
                             <i class="fa fa-plus"></i> 
-                            Registrar Venta
+                            Agregar Consulta
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="table-light">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <th>Datos del Paciente</th>
-                                <th>Fecha</th>
-                                <th>Datos del Usuario</th>
+                                <th>Datos Paciente</th>
+                                <th>Datos Médico</th>
+                                <th>Fecha de Atención</th>
                                 <th class="text-nowrap">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let venta of ventas | venta:filterVentas">
+                            <tr *ngFor="let eva of evaluacionPacientes | filter:filterConsulta">
                                 <td>
                                     <span class="label label-info">
-                                        {{venta.paciente.apellidoP}} {{venta.paciente.apellidoP2}} {{venta.paciente.nombreP}} {{venta.paciente.nombreP2}} 
+                                    {{eva.paciente.apellidoP}} {{eva.paciente.apellidoP2}} {{eva.paciente.nombreP}} {{eva.paciente.nombreP2}}
                                     </span>
                                 </td>
                                 <td>
                                     <span class="label label-success">
-                                    {{venta.fecha | date: 'MMM d, y, h:mm:ss a'}}
+                                    {{eva.usuario.email}}
                                 </span>
                                 </td>
                                 <td>
-                                    <span class="label label-info">
-                                    {{venta.usuario.email}}
-                                        </span>
+                                    <span class="label label-danger">
+                                    {{eva.fechaEvolucion | date: 'MMM d, y, h:mm:ss a'}}
+                                </span>
                                 </td>
                                 <td class="text-nowrap w100 text-center">
-
-                                    <a class="cursor" [routerLink]="['/dashboard/venta', venta._id]" data-toggle="tooltip" data-original-title="Detalles de la Venta">
-                                        <i class="fa fa-address-book-o text-info m-r-10"></i>
-                                    </a>
-                                    <!-- <a class="cursor" href="#" data-toggle="tooltip" data-original-title="Editar"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> -->
-                                    <a class="cursor" (click)="borrarVenta(venta)" data-toggle="tooltip" data-original-title="Eliminar"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a class="cursor" [routerLink]="['/dashboard/consultaDetalle', eva._id]" data-toggle="tooltip" data-original-title="Visualizar Consulta"> <i class="fa fa-address-book-o text-info m-r-10"></i> </a>
+                                    <a class="cursor" (click)="deleteConsulta(eva)" data-toggle="tooltip" data-original-title="Eliminar Consulta"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div>
-
-                    <button (click)="cambiarPagina(-15)" class="btn btn-secondary">Anterior</button> &nbsp;
-                    <button (click)="cambiarPagina(15)" class="btn btn-secondary">Siguiente</button>
-                </div>
+                <button (click)="cambiarPagina(-30)" class="btn btn-secondary">Anterior</button> &nbsp;
+                <button (click)="cambiarPagina(30)" class="btn btn-secondary">Siguiente</button>
             </div>
         </div>
     </div>

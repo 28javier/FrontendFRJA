@@ -5,6 +5,9 @@ import { map } from 'rxjs/operators';
 import { Usuario } from '../models/usuario.model';
 import { Producto } from '../models/producto.model';
 import { Paciente } from '../models/paciente.model';
+import { Categoria } from '../models/categoria.model';
+import { Especialidad } from '../models/especialidad.model';
+
 
 
 
@@ -31,11 +34,18 @@ export class BusquedasService {
     };
   }
 
+  // nombre1: string, nombre2: string, apellido1: string, apellido2: string, email: string,
+  //  cedula: string, sexo?: string, fechaNacimiento?: string, estadoCivil?: string, tipoDeSangre?: string, 
+  //  direccion1?: string, direccion2?: string, celular1?:
+  //  string, celular2?: string, password?: string, role?: string, especialidad?: _EspecialidadU, _id?: string,
+  //   img?: string
 
   private transformarUsuarios(resultados: any[]): Usuario[] {
     return resultados.map(
       user => new Usuario(user.nombre1, user.nombre2, user.apellido1,
-        user.apellido2, user.email, '', user.role, user.especialidad,
+        user.apellido2, user.email, user.cedula, user.sexo, user.fechaNacimiento,
+        user.estadoCivil, user.tipoDeSangre, user.direccion1, user.direccion2, user.celular1,
+        user.celular2, '', user.role, user.especialidad,
         user._id, user.img));
   }
 
@@ -46,7 +56,15 @@ export class BusquedasService {
     return resultados;
   }
 
-  buscar(tipo: 'usuarios'|'productos'|'pacientes', termino: string) {
+  private transformarCategorias(resultados: any[]): Categoria[] {
+    return resultados;
+  }
+
+  private transformarEspecialidades(resultados: any[]): Especialidad[] {
+    return resultados;
+  }
+
+  buscar(tipo: 'usuarios'|'productos'|'pacientes'| 'categorias' | 'especialidades', termino: string) {
     // todo/coleccion/usuarios/u
     const url = `${base_url}/todo/coleccion/${tipo}/${termino}`;
     return this.http.get<any[]>(url, this.headers)
@@ -61,7 +79,13 @@ export class BusquedasService {
              return  this.transformarProductos(resp.resultados);
 
             case 'pacientes':
-              return  this.transformarPacientes(resp.resultados);
+             return  this.transformarPacientes(resp.resultados);
+
+            case 'categorias':
+             return  this.transformarCategorias(resp.resultados);
+
+            case 'especialidades':
+             return  this.transformarEspecialidades(resp.resultados);
 
            default:
              return [];

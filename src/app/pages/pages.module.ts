@@ -27,6 +27,9 @@ import { UpdateUsuarioComponent } from './usuario/update-usuario/update-usuario.
 import { VentasComponent } from './ventas/ventas.component';
 import { VentasCreateComponent } from './ventas/ventas-create/ventas-create.component';
 import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.component';
+import { ConsultasComponent } from './consultas/consultas.component';
+import { ConsultaCreateComponent } from './consultas/consulta-create/consulta-create.component';
+import { ConsultaDetalleComponent } from './consultas/consulta-detalle/consulta-detalle.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.c
     VentasComponent,
     VentasCreateComponent,
     VentasDetalleComponent,
+    ConsultasComponent,
+    ConsultaCreateComponent,
+    ConsultaDetalleComponent,
   ],
   exports: [
     DashboardComponent,
@@ -65,6 +71,11 @@ import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.c
     UpdateUsuarioComponent,
     VentasComponent,
     VentasCreateComponent,
+    ConsultasComponent,
+    ConsultaCreateComponent,
+    ConsultaDetalleComponent,
+
+
   ],
   imports: [
     CommonModule,

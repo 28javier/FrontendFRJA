@@ -20,6 +20,7 @@ export class ProductoComponent implements OnInit, OnDestroy {
   public desde: number = 0;
   public totalProducto: number = 0;
   public imgSusb: Subscription;
+  // public filterProducto = '';
 
 
   constructor( private productoService: ProductoService,
@@ -73,8 +74,8 @@ this.imgSusb.unsubscribe();
       return this.cargarProductoPa();
     }
     this.busquedaService.buscar('productos', termino)
-      .subscribe(resp => {
-        // this.productos = resp;
+      .subscribe( resp => {
+        this.productos = resp;
       });
   }
 

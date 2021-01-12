@@ -52,9 +52,9 @@ export class PacienteComponent implements OnInit {
     if (termino.length === 0) {
       return this.cargarPacientePa();
     }
-    this.busquedaService.buscar('pacientes', termino)
+    this.busquedaService.buscar( 'pacientes', termino)
       .subscribe(resp => {
-        // this.pacientes = resp;
+        this.pacientes = resp;
       });
   }
 
