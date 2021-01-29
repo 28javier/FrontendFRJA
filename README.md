@@ -10,6 +10,13 @@ Se usa este comando para levantar la aplicación de forma de desarrollo.
 ```javascript
    ng server - o
 ```
+
+## Comando para crear la carpeta para ser subida a algun servidor despúes 
+### Comando para crear la carpeta para el Depoly en Producción
+```javascript
+ng build --prod
+```
+
 # Pantallasos de la Aplicación 
 ###  Login del Sistema
 ![Login del Sistema](https://scontent.fmec1-1.fna.fbcdn.net/v/t1.0-9/143912720_443474163675837_2094585865869409314_o.jpg?_nc_cat=106&ccb=2&_nc_sid=0debeb&_nc_ohc=h7WPAxviDiQAX9X-CTZ&_nc_ht=scontent.fmec1-1.fna&oh=7f4a99cbe664415371f46d318fc962b7&oe=60385D1B "Login del Sistema")
