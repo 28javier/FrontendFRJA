@@ -53,7 +53,7 @@ export class PacienteComponent implements OnInit {
       return this.cargarPacientePa();
     }
     this.busquedaService.buscar( 'pacientes', termino)
-      .subscribe(resp => {
+      .subscribe( (resp: Paciente[]) => {
         this.pacientes = resp;
       });
   }

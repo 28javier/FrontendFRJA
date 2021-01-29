@@ -114,7 +114,7 @@ buscar(termino: string) {
     return this.cargarEspecialidadPa();
   }
   this.busquedaService.buscar('especialidades', termino)
-    .subscribe( resp => {
+    .subscribe( (resp: Especialidad[]) => {
       this.especialidades = resp;
     });
 }

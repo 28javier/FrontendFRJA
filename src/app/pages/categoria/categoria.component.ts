@@ -110,7 +110,7 @@ export class CategoriaComponent implements OnInit {
       return this.cargaCategoriaPa();
     }
     this.busquedaService.buscar('categorias', termino)
-      .subscribe( resp => {
+      .subscribe( (resp: Categoria[]) => {
         this.categorias = resp;
       });
   }

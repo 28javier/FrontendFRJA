@@ -74,7 +74,7 @@ this.imgSusb.unsubscribe();
       return this.cargarProductoPa();
     }
     this.busquedaService.buscar('productos', termino)
-      .subscribe( resp => {
+      .subscribe( (resp: Producto[]) => {
         this.productos = resp;
       });
   }
