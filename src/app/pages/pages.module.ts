@@ -30,6 +30,7 @@ import { VentasDetalleComponent } from './ventas/ventas-detalle/ventas-detalle.c
 import { ConsultasComponent } from './consultas/consultas.component';
 import { ConsultaCreateComponent } from './consultas/consulta-create/consulta-create.component';
 import { ConsultaDetalleComponent } from './consultas/consulta-detalle/consulta-detalle.component';
+import { PdfConsultaComponent } from './consultas/pdf-consulta/pdf-consulta.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ConsultaDetalleComponent } from './consultas/consulta-detalle/consulta-
     ConsultasComponent,
     ConsultaCreateComponent,
     ConsultaDetalleComponent,
+    PdfConsultaComponent
   ],
   exports: [
     DashboardComponent,
@@ -74,6 +76,7 @@ import { ConsultaDetalleComponent } from './consultas/consulta-detalle/consulta-
     ConsultasComponent,
     ConsultaCreateComponent,
     ConsultaDetalleComponent,
+    PdfConsultaComponent
 
 
   ],

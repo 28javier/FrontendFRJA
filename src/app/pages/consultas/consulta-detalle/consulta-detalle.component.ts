@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ConsultasService } from '../../../services/consultas.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Paciente } from '../../../models/paciente.model';
-import { ConsultaM } from 'src/app/models/consulta.model';
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-consulta-detalle',
@@ -14,6 +13,7 @@ import { ConsultaM } from 'src/app/models/consulta.model';
 export class ConsultaDetalleComponent implements OnInit {
 
   // public consultaForms: FormGroup;
+  public id;
   public consulta: any = {
     motivoConsulta: '',
     tratamiento: '',
@@ -21,6 +21,8 @@ export class ConsultaDetalleComponent implements OnInit {
     paciente: '',
     usuario: ''
   };
+
+  // @ViewChild('content') content: ElementRef;
 
   constructor( private consultaService: ConsultasService,
                 private activateRoute: ActivatedRoute,
@@ -50,9 +52,22 @@ export class ConsultaDetalleComponent implements OnInit {
       // console.log(evaluacionPaciente);
       this.consulta = evaluacionPaciente;
     }, error => {
-      console.log('Error al cargar');
-      
+      console.log('Error al cargar');  
     })
   }
 
+  descargarPdf(){
+   
+    const options = {
+      filename: 'FRJ_file.pdf',
+      image: {type: 'jpeg'},
+      htmlcanvas: {},
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    }; 
+    const content: Element = document.getElementById('content');
+    html2pdf()
+    .from(content)
+    .set(options)
+    .save();
+  }
 }

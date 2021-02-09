@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2';
+
 import { VentasService } from '../../../services/ventas.service';
-import { VentaM } from '../../../models/venta.model';
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-ventas-detalle',
@@ -41,11 +41,24 @@ export class VentasDetalleComponent implements OnInit {
         
       },
       error=>{
-
       }
     );
   }
 
+  descargarPdf(){
+   
+    const options = {
+      filename: 'FRJ_file.pdf',
+      image: {type: 'jpeg'},
+      htmlcanvas: {},
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    }; 
+    const content: Element = document.getElementById('content');
+    html2pdf()
+    .from(content)
+    .set(options)
+    .save();
+  }
  
   
 }
